@@ -185,26 +185,26 @@ thead th {
 tbody td {
     height: 40px;
     border: 1px solid white;
-    width: 50px; /* 設置每個單元格的寬度 */
-    height: 20px; /* 設置每個單元格的高度 */
+    width: 50px;
+    height: 20px;
 }
 
 .availability-table .first {
-    width: 100px; /* 設置第一列的寬度 */
+    width: 100px;
 }
 
-/* 表格內容樣式 */
+
 .availability-table .unavailable {
     cursor: pointer;
-    background-color: #f8d7da; /* 粉紅色 */
+    background-color: #f8d7da;
 }
 
 .availability-table .available {
     cursor: pointer;
-    background-color: #28a745; /* 綠色 */
+    background-color: #28a745;
 }
 
-/* Participants 樣式 */
+
 .participants-table td {
     padding: 10px;
 }
