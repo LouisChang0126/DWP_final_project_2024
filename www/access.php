@@ -6,8 +6,8 @@
       <title>When2Meet Pro</title>
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-      <link rel="icon" type="image/jpg" href="../images/sad_tako.png">
-      <link rel="stylesheet" type="text/css" href = "../css/access.css">
+      <link rel="icon" type="image/jpg" href="/images/sad_tako.png">
+      <link rel="stylesheet" type="text/css" href = "/css/access.css">
    </head>
 
    <body>
@@ -24,7 +24,7 @@
       </header>
 
       <main style="overflow:hidden">
-        <img src="../images/NYCU.jpg" alt="NYCU Background" class="full">
+        <img src="/images/NYCU.jpg" alt="NYCU Background" class="full">
         <section class="tab-container">
             <div class="buttons-container">
                 <button class="tab_button first <?php echo $_SESSION['register_show']; ?>" id="0">Register</button>
@@ -56,7 +56,7 @@
          <p>Copyright © 2024 張家睿、司徒立中、蔡欣龍 All Rights Reserved</p>
       </footer>
 
-      <script src="../js/tab_ctrl.js"></script>
+      <script src="/js/tab_ctrl.js"></script>
    </body>
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 function register(){
-   $link = mysqli_connect("localhost", "root", "", "dwp_final");
+   $link = mysqli_connect("db", "root", "", "dwp_final");
    if (!$link) {
       die("Database connection failed: " . mysqli_connect_error());
    }
@@ -125,7 +125,7 @@ function register(){
    mysqli_close($link);
 }
 function login(){
-   $link = mysqli_connect("localhost", "root", "", "dwp_final");
+   $link = mysqli_connect("db", "root", "", "dwp_final");
    if (!$link) {
       die("Database connection failed: " . mysqli_connect_error());
    }
