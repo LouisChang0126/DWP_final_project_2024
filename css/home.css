@@ -153,115 +153,99 @@ footer {
 }
 
 
-.tab-container {
-    position: relative;
-    left: 50%;
-    top: 50%;
-    width: 100%;
+.sidebar_left{
+    position: fixed;
+    width: 280px;
+    left: -280px;
     height: 100%;
-    transform: translate(-50%, -50%);
-
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    color: white;
+    background-color: #333;
+    transition: all .5s ease;
 }
-
-.buttons-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
+.sidebar_left header{
+    font-size: 45px;
+    font-weight: 600;
+    color: orange;
+    line-height: 70px;
+    text-align: center;
+    background-color: #333;
+    user-select: none;
+    font-family: 'Lato', sans-serif;
 }
-
-.contents-container {
-    display: grid;
-    grid-template-columns: 1fr;
-    width: 100%;
-    height: 100%;
-}
-
-.tab_button {
-    position: static;
-    width: 100%;
-    padding: 1rem;
-    border: none;
-    text-transform: capitalize;
-    font-size: 1rem;
+.sidebar_left a{
     display: block;
-    background: #888;
-    cursor: pointer;
-    transition: all 0.3s linear;
-    letter-spacing: 0.1rem;
-    color: white;
-    font-size: 28px;
-}
-
-button.first {
-    border-top-left-radius: 1rem;
-}
-
-button.last {
-    border-top-right-radius: 1rem;
-}
-
-.tab_button:hover:not(.active) {
-    background: #777;
-}
-
-.tab_content {
-    position: static;
-    display: none;
-    background-color: #222;
-    font-size: 27px;
-    padding: 2rem 1.5rem;
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
-}
-
-.tab_content h4 {
-    font-size: 24px;
-    margin-bottom: 1rem;
-}
-
-.tab_button.active {
-    background: #444;
-    color: white;
-}
-
-.tab_content.active {
-    display: block;
-}
-
-.tab_content form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.tab_content input[type="text"],
-.tab_content input[type="password"],
-.tab_content input[type="email"],
-.tab_content input[type="submit"] {
-    font-size: 1rem;
-    padding: 0.5rem 1rem;
+    height: 93px;
     width: 100%;
-    max-width: 300px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+    color: white;
+    line-height: 65px;
+    padding-left: 30px;
     box-sizing: border-box;
-}
+    border-left: 5px solid transparent;
+    font-family: 'Lato', sans-serif;
+    transition: all .5s ease;
+    text-decoration: none;
 
-.tab_content input[type="submit"] {
-    background-color: #444;
-    color: white;
-    border: none;
+    display:flex;
+    align-items:center;
+}
+a.active,a:hover{
+    border-left: 5px solid var(--accent-color);
+    color: #fff;
+    background: linear-gradient(to left, var(--accent-color), var(--gradient-color));
+}
+.sidebar_left a i{
+    font-size: 28px;
+    margin-right: 16px;
+}
+.sidebar_left a span{
+    font-size: 22px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+#check1{
+    display: none;
+}
+label #btn_left,label #cancel_left{
+    position: absolute;
+    left: 5px;
     cursor: pointer;
-    transition: background-color 0.3s;
+    color: white;
+    border-radius: 5px;
+    margin: 15px 30px;
+    font-size: 36px;
+    background-color: transparent;
+    height: 45px;
+    width: 45px;
+    text-align: center;
+    line-height: 45px;
+    transition: all .5s ease;
+}
+label #cancel_left{
+    opacity: 0;
+    visibility: hidden;
+}
+#check1:checked ~ .sidebar_left{
+    left: 0;
+}
+#check1:checked ~ label #btn_left{
+    margin-left: 285px;
+    opacity: 0;
+    visibility: hidden;
+}
+#check1:checked ~ label #cancel_left{
+    margin-left: 285px;
+    opacity: 1;
+    visibility: visible;
 }
 
-.tab_content input[type="submit"]:hover {
-    background-color: #666;
+.sidebar_left > a.active,.sidebar_left > a:hover:nth-child(even) {
+    --accent-color: #52d6f4;
+    --gradient-color: #c1b1f7;
+}
+.sidebar_left a.active,.sidebar_left > a:hover:nth-child(odd) {
+    --accent-color: #c1b1f7;
+    --gradient-color: #A890FE;
+}
+
+.hidden {
+    display: none;
 }

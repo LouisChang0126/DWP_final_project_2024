@@ -1,92 +1,82 @@
 <!DOCTYPE html>
 
 <html>
-   <head>
-      <meta charset = "utf-8">
-      <title>When2Meet Pro</title>
-      <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
-      <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
-      <link rel="icon" type="image/jpg" href="../images/sad_tako.png">
-      <link rel="stylesheet" type="text/css" href = "../css/home.css">
-   </head>
+    <head>
+        <meta charset = "utf-8">
+        <title>When2Meet Pro</title>
+        <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+        <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+        <link rel="icon" type="image/jpg" href="../images/sad_tako.png">
+        <link rel="stylesheet" type="text/css" href = "../css/home.css">
+    </head>
 
-   <body>
-      <header>
-         <h1>When2Meet Pro</h1>
-      </header>
+    <body>
+        <header>
+            <h1>When2Meet Pro</h1>
+        </header>
 
-      <main>
-         <div class="box">
+        <main>
+            <div class="section hidden" id="add">
+                <h2>New Event</h2>
+                <hr class="soft" style="width:50%;">
+                <br>
+            </div>
+
+            <div class="section hidden" id="friend">
+                <h2>Friend</h2>
+                <hr class="soft" style="width:50%;">
+                <br>
+                <p>AJIDLADJAJDL</p>
+            </div>
+
+            <div class="section hidden" id="history">
+                <h2>History</h2>
+                <hr class="soft" style="width:50%;">
+                <br>
+            </div>
+
+            <div class="section hidden" id="logout">
+                <h2>Logout</h2>
+                <hr class="soft" style="width:50%;">
+                <br>
+            </div>
+
+            <div class="section" id="about">
+                <h2>About</h2>
+                <hr class="soft" style="width:50%;">
+                <br>
+            </div>
+
+            <input type="checkbox" id="check1">
+            <label for="check1">
+               <i class="fas fa-bars" id="btn_left"></i>
+               <i class="fas fa-times" id="cancel_left"></i>
+            </label>
+            <div class="sidebar_left">
+               <header>Menu</header>
+               <header>Menu</header>
+               <a href="#" class="menu_item" id="add"    ><i class="fa fa-plus-square"     id="add"    ></i><span id="add"    >New Event</span></a>
+               <a href="#" class="menu_item" id="friend" ><i class="fa fa-users"           id="friend" ></i><span id="friend" >Friends</span></a>
+               <a href="#" class="menu_item" id="history"><i class="fa fa-history"         id="history"></i><span id="history">History</span></a>
+               <a href="#" class="menu_item" id="logout" ><i class="fa fa-sign-out-alt"    id="logout" ></i><span id="logout" >Logout</span></a>
+               <a href="#" class="menu_item" id="about"  ><i class="fa fa-question-circle" id="about"  ></i><span id="about"  >About</span></a>
+            </div>
+
+            <!--<div class="box">
             <div class="section Left">
-               <img src="../images/avatar1.png" alt="Avatar">
-               <br>
-               <h2>Sytwu</h2>
-               <br>
-               <p>temp@gmail.com</p>
+                <img src="../images/avatar1.png" alt="Avatar">
+                <br>
+                <h2>Sytwu</h2>
+                <br>
+                <p>temp@gmail.com</p>
             </div>
-            <div class="line"></div>
-            <div class="section Right">
-               <section class="tab-container">
-                  <div class="buttons-container">
-                     <button class="tab_button first active" id="0">New</button>
-                     <button class="tab_button" id="1">Edit</button>
-                     <button class="tab_button" id="2">Friends</button>
-                     <button class="tab_button last" id="3">History</button>
-                  </div>
-                  <div class="contents-container">
-                     <div class="tab_content active" id="0">
-                        <form method="post" action="">
-                           <label for="event_name">Event Name:</label>
-                           <input type="text" id="event_name" name="event_name">
-                           <label for="event_description">Event Description:</label>
-                           <input type="text" id="event_description" name="event_description">
-                           <label for="event_location">Event Location:</label>
-                           <input type="text" id="event_location" name="event_location">
-                           <label for="event_start">Event Start:</label>
-                           <input type="datetime-local" id="event_start" name="event_start">
-                           <label for="event_end">Event End:</label>
-                           <input type="datetime-local" id="event_end" name="event_end">
-                           <input type="submit" name="action" value="create">
-                        </form>
-                     </div>
-                     <div class="tab_content" id="1">
-                        <form method="post" action="">
-                           <label for="event_name">Event Name:</label>
-                           <input type="text" id="event_name" name="event_name">
-                           <label for="event_description">Event Description:</label>
-                           <input type="text" id="event_description" name="event_description">
-                           <label for="event_location">Event Location:</label>
-                           <input type="text" id="event_location" name="event_location">
-                           <label for="event_start">Event Start:</label>
-                           <input type="datetime-local" id="event_start" name="event_start">
-                           <label for="event_end">Event End:</label>
-                           <input type="datetime-local" id="event_end" name="event_end">
-                           <input type="submit" name="action" value="edit">
-                        </form>
-                     </div>
-                     <div class="tab_content" id="2">
-                        <form method="post" action="">
-                           <label for="friend_name">Friend Name:</label>
-                           <input type="text" id="friend_name" name="friend_name">
-                           <input type="submit" name="action" value="add">
-                        </form>
-                     </div>
-                     <div class="tab_content" id="3">
-                        <form method="post" action="">
-                           <label for="event_name">Event Name:</label>
-                           <input type="text" id="event_name" name="event_name">
-                           <input type="submit" name="action" value="history">
-                        </form>
-                     </div>
-                  </div>
-               </section>
-            </div>
-         </div>
-      </main>
+            <div class="line"></div>-->
+        </main>
 
-      <footer>
-         <p>Copyright © 2024 張家睿、司徒立中、蔡欣龍 All Rights Reserved</p>
-      </footer>
-      <script src="../js/tab_ctrl.js"></script>
-   </body>
+        <footer>
+            <p>Copyright © 2024 張家睿、司徒立中、蔡欣龍 All Rights Reserved</p>
+        </footer>
+        <script src="../js/tab_ctrl.js"></script>
+        <script src="../js/side_bar.js"></script>
+    </body>
 </html>
