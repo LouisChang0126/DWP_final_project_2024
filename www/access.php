@@ -125,7 +125,7 @@ function register(){
    mysqli_close($link);
 }
 function login(){
-   $link = mysqli_connect("db", "root", "", "dwp_final");
+   $link = mysqli_connect("localhost", "root", "", "dwp_final");
    if (!$link) {
       die("Database connection failed: " . mysqli_connect_error());
    }
