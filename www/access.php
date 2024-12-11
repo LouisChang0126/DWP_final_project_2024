@@ -7,7 +7,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
       <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
       <link rel="icon" type="image/jpg" href="/images/sad_tako.png">
-      <link rel="stylesheet" type="text/css" href = "/css/access.css">
+      <link rel="stylesheet" type="text/css" href = "./css/access.css">
    </head>
 
    <body>
@@ -74,7 +74,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 }
 
 function register(){
-   $link = mysqli_connect("db", "root", "", "dwp_final");
+   $link = mysqli_connect("localhost", "root", "", "dwp_final");
    if (!$link) {
       die("Database connection failed: " . mysqli_connect_error());
    }
