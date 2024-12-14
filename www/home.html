@@ -23,16 +23,52 @@
             </div>
 
             <div class="section hidden" id="friend">
-                <h2>Friend</h2>
+                <h2>Friends</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
-                <p>AJIDLADJAJDL</p>
+                <div class="scroll">
+                    <div class="block" style="background-color: darkcyan">
+                        <img src="./images/avatar1.png" alt="Avatar">
+                        <h2>Sytwu</h2>
+                        <button type="button" class="btn">Schedule</button>
+                        
+                    </div>
+                    <div class="block"  style="background-color:darkgreen">
+                        <img src="./images/avatar1.png" alt="Avatar">
+                        <h2>Louis</h2>
+                        <button type="button" class="btn">Schedule</button>
+                    </div>
+                    <div class="block" style="background-color: darkmagenta">
+                        <img src="./images/avatar1.png" alt="Avatar">
+                        <h2>Darren</h2>
+                        <button type="button" class="btn">Schedule</button>
+                    </div>
+                </div>
             </div>
 
             <div class="section hidden" id="history">
                 <h2>History</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
+                <div class="scroll">
+                    <div class="block history-item" style="background-color: palevioletred">
+                        <h1>Event1</h1>
+                        <p>Participants, Another one, And another one, Homeless, Me</p>
+                        <button type="button" class="btn">Link</button>
+                    </div>
+                    <hr class="divider">
+                    <div class="block history-item" style="background-color: peachpuff">
+                        <h1>Event2</h1>
+                        <p>Participants</p>
+                        <button type="button" class="btn">Link</button>
+                    </div>
+                    <hr class="divider">
+                    <div class="block history-item" style="background-color: sandybrown">
+                        <h1>Event3</h1>
+                        <p>Participants</p>
+                        <button type="button" class="btn">Link</button>
+                    </div>
+                </div>
             </div>
 
             <div class="section hidden" id="logout">
@@ -44,7 +80,17 @@
             <div class="section" id="about">
                 <h2>About</h2>
                 <hr class="soft" style="width:50%;">
-                <br>
+                <div class="user-info-container">
+                    <div class="user-left">
+                        <img src="./images/avatar1.png" alt="User Avatar" class="user-avatar" style="width:70%; height:auto">
+                        <h1 class="user-name">User Name</h1>
+                        <p class="user-email" style="font-size:16px">example@example.com</p>
+                    </div>
+                    <div class="user-right"style="background-color: sandybrown">
+                        <p class="user-description">This is a brief description about the yourself. It can be edited by clicking the edit button below.</p>
+                        <button type="button" class="edit-button">Edit</button>
+                    </div>
+                </div>
             </div>
 
             <input type="checkbox" id="check1">
@@ -62,15 +108,192 @@
                <a href="#" class="menu_item" id="about"  ><i class="fa fa-question-circle" id="about"  ></i><span id="about"  >About</span></a>
             </div>
 
-            <!--<div class="box">
-            <div class="section Left">
-                <img src="./images/avatar1.png" alt="Avatar">
-                <br>
-                <h2>Sytwu</h2>
-                <br>
-                <p>temp@gmail.com</p>
+            <div class="pop-up-windows">
+                <div class="pop-up-window" id="Sytwu">
+                    <div class="pop-up-content" style="overflow-y:auto; max-height:65%">
+                        <span class="close">&times;</span>
+                        <h1>Sytwu's Schedule</h1>
+                        <hr class="soft" style="width:80%;">
+                        
+                        <div class="table_container">
+                            <table class="availability-table">
+                                <thead>
+                                    <tr>
+                                        <th class="first"></th>
+                                        <th>Sun</th>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>9:00 AM</td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>10:00 AM</td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>11:00 AM</td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="pop-up-window" id="Louis">
+                    <div class="pop-up-content" style="overflow-y:auto; max-height:65%">
+                        <span class="close">&times;</span>
+                        <h1>Louis's Schedule</h1>
+                        <hr class="soft" style="width:80%;">
+                        
+                        <div class="table_container">
+                            <table class="availability-table">
+                                <thead>
+                                    <tr>
+                                        <th class="first"></th>
+                                        <th>Sun</th>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>9:00 AM</td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="unavailable"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>10:00 AM</td>
+                                        <td class="unavailable"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="unavailable"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>11:00 AM</td>
+                                        <td class="unavailable"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="unavailable"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="pop-up-window" id="Darren">
+                    <div class="pop-up-content" style="overflow-y:auto; max-height:65%">
+                        <span class="close">&times;</span>
+                        <h1>Darren's Schedule</h1>
+                        <hr class="soft" style="width:80%;">
+                        
+                        <div class="table_container">
+                            <table class="availability-table">
+                                <thead>
+                                    <tr>
+                                        <th class="first"></th>
+                                        <th>Sun</th>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>9:00 AM</td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>10:00 AM</td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>11:00 AM</td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="line"></div>-->
         </main>
 
         <footer>
@@ -78,5 +301,6 @@
         </footer>
         <script src="./js/tab_ctrl.js"></script>
         <script src="./js/side_bar.js"></script>
+        <script src="./js/popup.js"></script>
     </body>
 </html>

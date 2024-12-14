@@ -15,7 +15,7 @@ menuItems.forEach(item =>
         const targetId = this.id;
         const targetSection = document.getElementById(targetId);
         if (targetSection)
-            {
+        {
             targetSection.classList.remove('hidden');
         }
     });

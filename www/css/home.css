@@ -249,3 +249,262 @@ label #cancel_left{
 .hidden {
     display: none;
 }
+
+.scroll {
+    overflow-y: scroll;
+    width: 60%;
+    height: 70%;
+}
+
+.block {
+    height: 40%;
+    width: 100%;
+    background-color: sandybrown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.block img {
+    width: auto;
+    height: 70%;
+    border-radius: 50%;
+    margin: 10px;
+}
+
+.block h1 {
+    width: 30%;
+    margin: 10px;
+    font-size: 40px;
+}
+
+.block h2 {
+    width: 50%;
+    margin: 10px;
+}
+
+.block h3 {
+    width: 50%;
+    margin: 10px;
+}
+
+.block p {
+    width: 60%;
+    margin: 10px;
+}
+
+.block button {
+    width: 15%;
+    margin: 50px;
+}
+
+.divider {
+    border: none;
+    height: 2px;
+    background-color: #ccc;
+}
+
+
+button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: steelblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    z-index: 2;
+}
+
+button:hover {
+    background-color: darkblue;
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+.hidden {
+    display: none;
+}
+
+
+.pop-up-window {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 5;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.pop-up-window .pop-up-content {
+    position: absolute;
+    color: white;
+    background-color: #333;
+    padding: 20px;
+    border: 4px solid orange;
+    border-radius: 10px;
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+div.pop-up-content h1 {
+    justify-content: center;
+    text-align: center;
+}
+
+div.box {
+    padding: 5%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div.textbox {
+    padding: 10px;
+    margin: 20px;
+}
+
+div.textbox p {
+    margin: 10px;
+}
+
+span.close {
+    align-self: flex-end;
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover {
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.sub-header {
+    background-color: #f8c471;
+    font-weight: bold;
+}
+
+.table_container {
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 20px 0;
+    color: white;
+    text-align: center;
+    font-size: 16px;
+}
+
+thead th {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border: 1px solid white;
+}
+
+tbody td {
+    height: 40px;
+    border: 1px solid white;
+    width: 50px;
+    height: 20px;
+}
+
+.availability-table .first {
+    width: 100px;
+}
+
+.availability-table .unavailable {
+    background-color: #f8d7da;
+}
+
+.availability-table .available {
+    background-color: #28a745;
+}
+
+.user-info-container {
+    width: 60%;
+    height: 60%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.user-left {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.user-avatar {
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.user-email {
+    color: white;
+    font-size: 18px;
+}
+
+.user-right {
+    height: 80%;
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    padding: 10px;
+    text-align: center;
+}
+
+.user-description {
+    margin-bottom: 20px;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.edit-button {
+    background-color: steelblue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-button:hover {
+    background-color: darkblue;
+}
+
