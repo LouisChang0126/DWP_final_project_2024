@@ -8,14 +8,17 @@
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         <link rel="icon" type="image/jpg" href="./images/sad_tako.png">
         <link rel="stylesheet" type="text/css" href = "./css/home.css">
+        <script src="./js/home.js"></script>
+        <script src="./js/check_login.js"></script>
     </head>
 
     <body>
         <header>
-            <h1>When2Meet Pro</h1>
+            <h1 id="welcomeMessage">When2Meet Pro</h1>
         </header>
 
         <main>
+            <script>checkLoginStatus()</script>
             <div class="section hidden" id="add">
                 <h2>New Event</h2>
                 <hr class="soft" style="width:50%;">
@@ -75,6 +78,8 @@
                 <h2>Logout</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
+                <button onclick=btnLogout()>Logout</button>
+                <br>
             </div>
 
             <div class="section" id="about">
@@ -83,7 +88,7 @@
                 <div class="user-info-container">
                     <div class="user-left">
                         <img src="./images/avatar1.png" alt="User Avatar" class="user-avatar" style="width:70%; height:auto">
-                        <h1 class="user-name">User Name</h1>
+                        <h1 class="user-name", id=loginUserName>User Name</h1>
                         <p class="user-email" style="font-size:16px">example@example.com</p>
                     </div>
                     <div class="user-right"style="background-color: sandybrown">

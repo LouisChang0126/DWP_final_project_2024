@@ -3,5 +3,5 @@ function btnConfirm() {
 }
 
 function btnLogin() {
-	window.location.href = "access.php"
+	window.location.href = "access.php";
 }
