@@ -49,143 +49,30 @@
                   </table>
                </div>
                <hr class="soft" style="width:50%;">
-               <div class="table_container">
-                  <table class="availability-table">
-                     <thead>
-                        <tr>
-                           <th class="first"></th>
-                           <th>Sun</th>
-                           <th>Mon</th>
-                           <th>Tue</th>
-                           <th>Wed</th>
-                           <th>Thu</th>
-                           <th>Fri</th>
-                           <th>Sat</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td>9:00 AM</td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                        </tr>
-                     </tbody>
-                     <tbody>
-                        <tr>
-                           <td>10:00 AM</td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                        </tr>
-                     </tbody>
-                     <tbody>
-                        <tr>
-                           <td>11:00 AM</td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                           <td class="unavailable"></td>
-                        </tr>
-                     </tbody>
-                  </table>
+               <div class="table_container" id="user_table_container">
+                  <p>
+                     Errors occurred in event.js with user <br>
+                     Please check the function named create_table <br>
+                     Remember to appendChild(table) <br>
+                  </p>
                </div>
             </div>
             <div class="line"></div>
             <div class="section">
                <h2>Group's Availability</h2>
-               <div class="row_container">
-                  <p style="margin:10px">0/5</p>
-                  <table width="30" height="10" border="0" cellspacing="0" cellpadding="0">
-                     <tr>
-                        <td width="30" height="10" bgcolor="#111"></td>
-                     </tr>
-                  </table>
-                  <table width="30" height="10" border="0" cellspacing="0" cellpadding="0">
-                     <tr>
-                        <td width="30" height="10" bgcolor="#17371E"></td>
-                     </tr>
-                  </table>
-                  <table width="30" height="10" border="0" cellspacing="0" cellpadding="0">
-                     <tr>
-                        <td width="30" height="10" bgcolor="#1D5C2B"></td>
-                     </tr>
-                  </table>
-                  <table width="30" height="10" border="0" cellspacing="0" cellpadding="0">
-                     <tr>
-                        <td width="30" height="10" bgcolor="#228238"></td>
-                     </tr>
-                  </table>
-                  <table width="30" height="10" border="0" cellspacing="0" cellpadding="0">
-                     <tr>
-                        <td width="30" height="10" bgcolor="#28a745"></td>
-                     </tr>
-                  </table>
-                  <p style="margin:10px">5/5</p>
+               <div class="row_container" id="display_ratio">
+                  <p>
+                     Errors occurred in event.js <br>
+                     Please check the function named update_table <br>
+                  </p>
                </div>
                <hr class="soft" style="width:50%;">
-               <div class="table_container">
-                  <table class="availability-table">
-                     <thead>
-                        <tr>
-                           <th class="first"></th>
-                           <th>Sun</th>
-                           <th>Mon</th>
-                           <th>Tue</th>
-                           <th>Wed</th>
-                           <th>Thu</th>
-                           <th>Fri</th>
-                           <th>Sat</th>
-                        </tr>
-                     </thead>
-                     <tbody>
-                        <tr>
-                           <td>9:00 AM</td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                        </tr>
-                     </tbody>
-                     <tbody>
-                        <tr>
-                           <td>10:00 AM</td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                        </tr>
-                     </tbody>
-                     <tbody>
-                        <tr>
-                           <td>11:00 AM</td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                           <td class="result"></td>
-                        </tr>
-                     </tbody>
-                  </table>
+               <div class="table_container" id="group_table_container">
+                  <p>
+                     Errors occurred in event.js with group <br>
+                     Please check the function named create_table <br>
+                     Remember to appendChild(table) <br>
+                  </p>
                </div>
             </div>
          </div>
@@ -195,6 +82,5 @@
          <p>Copyright © 2024 張家睿、司徒立中、蔡欣龍 All Rights Reserved</p>
       </footer>
       <script src="./js/event.js"></script>
-      <script src="./js/table.js"></script>
    </body>
 </html>
