@@ -1,8 +1,5 @@
-var container = document.getElementById('user_schedule');
 var btn = document.getElementsByClassName('edit-button')[0];
 var des = document.getElementsByClassName('user-description')[0];
-var table = create_table();
-container.appendChild(table);
 
 var isEditing = false;
 
@@ -50,7 +47,7 @@ document.addEventListener("click", function(event)
     }
 });
 
-function create_table()
+function create_table(quick_table)
 {
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
     const times = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'];
@@ -77,23 +74,39 @@ function create_table()
 
 
     const tbody = document.createElement('tbody');
-
-    times.forEach(time =>
-    {
-        const row = document.createElement('tr');
-        const timeCell = document.createElement('td');
-        timeCell.textContent = time;
+    
+    // 插入時間表的資料行
+    Object.entries(JSON.parse(quick_table)).forEach(([key, value]) => {
+        const row = document.createElement("tr");
+        const timeCell = document.createElement("td");
+        timeCell.textContent = key;
         row.appendChild(timeCell);
 
-        days.forEach(() => 
-        {
-            const cell = document.createElement('td');
-            cell.classList.add('unavailable');
+        value.forEach((v) => {
+            const cell = document.createElement("td");
+            cell.className = v ? "available" : "unavailable";
             row.appendChild(cell);
         });
 
         tbody.appendChild(row);
     });
+
+    // times.forEach(time =>
+    // {
+    //     const row = document.createElement('tr');
+    //     const timeCell = document.createElement('td');
+    //     timeCell.textContent = time;
+    //     row.appendChild(timeCell);
+
+    //     days.forEach(() => 
+    //     {
+    //         const cell = document.createElement('td');
+    //         cell.classList.add('unavailable');
+    //         row.appendChild(cell);
+    //     });
+
+    //     tbody.appendChild(row);
+    // });
 
     table.appendChild(tbody);
 

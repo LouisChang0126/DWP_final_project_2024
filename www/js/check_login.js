@@ -11,6 +11,7 @@ function checkLoginStatus() {
 		}
 		document.getElementById("loginUsername").textContent = data.username;
 		document.getElementById("loginEmail").textContent = data.email;
+		document.getElementById('user_schedule').appendChild(create_table(data.quick_table));
 	})
 	.catch(error => console.error('Error:', error)); // Log any errors
 }

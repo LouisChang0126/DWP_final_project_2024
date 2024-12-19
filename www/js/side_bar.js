@@ -68,7 +68,7 @@ function friends() {
             const jsonObject = JSON.parse(data);
             friend_scroll = document.getElementById("friend-scroll");
             Object.entries(jsonObject).forEach(([key, value]) => {
-                friend_scroll.innerHTML = `
+                friend_scroll.innerHTML += `
                     <hr class="divider">
                     <div class="block">
                         <img src="./images/avatar1.png" alt="Avatar">
@@ -89,7 +89,8 @@ function history() {
             const jsonObject = JSON.parse(data);
             history_scroll = document.getElementById("history-scroll");
             Object.entries(jsonObject).forEach(([key, value]) => {
-                history_scroll.innerHTML = `
+                history_scroll.innerHTML += `
+                    <hr class="divider">
                     <div class="block history-item">
                         <h1>${key}</h1>
                         <h3>Participants, Another one, And another one, Homeless, Me</h3>
