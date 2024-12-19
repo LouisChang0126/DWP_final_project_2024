@@ -31,7 +31,6 @@ CREATE TABLE `timetable` (
   `id` int(20) NOT NULL,
   `name` varchar(20) NOT NULL,
   `user_table` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`user_table`)),
-  `plus_table` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_bin NOT NULL CHECK (json_valid(`plus_table`))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------

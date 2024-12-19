@@ -23,10 +23,10 @@ btn.addEventListener('click', function()
     I = Information
 */
 
-let days = ['20241212', '20241213', '20241214', '20241215', '20241216', '20241217', '20241218'];
-let times = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'];
 // let days = [];
 // let times = [];
+let days = ['20241212', '20241213', '20241214', '20241215', '20241216', '20241217', '20241218'];
+let times = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'];
 
 var UT = create_table(days, times, 'user');
 var GT = create_table(days, times, 'group');
@@ -53,6 +53,8 @@ for (var i = 0; i < times.length; i++)
 }
 update_table(GT, GTI);
 
+
+// Add event listener to each cell
 document.addEventListener('click', function(object)
 {
     classes = object.target.classList;
@@ -212,70 +214,55 @@ function interpolateColor(startHex, endHex, factor)
 }
 
 function updateGroupTimetable(event_id) {
-    // extract unique dates and times from user table data
-    // then determine the Group Timetable size
-    // then fetch userdata and color the Group Timetable
-    // using function loadUserData(userTable)
     fetch(`get_event_data.php?event_id=${event_id}`)
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const userTable = data.data;
-                
-                // Get the first user's data (structure will be same for all users)
-                const firstUser = userTable[Object.keys(userTable)[0]];
-                
-                // Extract all times
-                times = Object.keys(firstUser);
-                
-                // Extract all dates from the first time slot
-                const firstTimeSlot = firstUser[times[0]];
-                days = Object.keys(firstTimeSlot);
+                // Extract metadata
+                const metadata = data.data.metadata;
+                times = metadata.times;
+                days = metadata.dates;
 
                 // Create tables
                 UT = create_table(days, times, 'user');
                 GT = create_table(days, times, 'group');
 
-                // Initialize arrays with correct size
-                UTI = Array.from({ length: times.length }, () => Array.from({ length: days.length }, () => 0));
-                GTI = Array.from({ length: times.length }, () => Array.from({ length: days.length }, () => 0));
+                // Initialize arrays
+                UTI = Array.from({ length: times.length }, () => 
+                    Array.from({ length: days.length }, () => 0));
+                GTI = Array.from({ length: times.length }, () => 
+                    Array.from({ length: days.length }, () => 0));
 
-                // Update the DOM
+                // Process userdata
+                Object.values(data.data.userdata).forEach(userData => {
+                    userData.avail.forEach((timeSlot, timeIndex) => {
+                        timeSlot.forEach((available, dateIndex) => {
+                            GTI[timeIndex][dateIndex] += available;
+                        });
+                    });
+                });
+
+                // Process guestdata
+                Object.values(data.data.guestdata).forEach(guestData => {
+                    guestData.avail.forEach((timeSlot, timeIndex) => {
+                        timeSlot.forEach((available, dateIndex) => {
+                            GTI[timeIndex][dateIndex] += available;
+                        });
+                    });
+                });
+
+                // Update DOM
                 UTC.innerHTML = '';
                 GTC.innerHTML = '';
                 UTC.appendChild(UT);
                 GTC.appendChild(GT);
-                // Update tables with initial data
+                
+                // Update tables
                 update_table(UT, UTI);
                 update_table(GT, GTI);
-
-                // Load user data
-                loadUserData(userTable);
             }
         })
         .catch(error => console.error('Error:', error));
-}
-
-function loadUserData(userTable) {
-    console.log('Initial userTable:', userTable);
-    
-    GTI = Array.from({ length: times.length }, () => 
-        Array.from({ length: days.length }, () => 0)
-    );
-    
-    Object.keys(userTable).forEach(userId => {
-        const userData = userTable[userId];
-        times.forEach((time, timeIndex) => {
-            days.forEach((day, dayIndex) => {
-                if (userData[time]?.[day]) {
-                    GTI[timeIndex][dayIndex] += 1;
-                }
-            });
-        });
-    });
-    
-    console.log('Final GTI:', GTI);
-    update_table(GT, GTI);
 }
 
 // Call the initialization function when the page loads
