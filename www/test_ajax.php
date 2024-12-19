@@ -1,8 +1,8 @@
 <?php
-session_start();
+// session_start();
 
 // 定義處理請求的函數
-function friends($uid) {
+function friends($name) {
     $link = mysqli_connect("localhost", "root", "", "dwp_final");
     if (!$link) {
         die("Database connection failed: " . mysqli_connect_error());
@@ -10,13 +10,12 @@ function friends($uid) {
     $link->set_charset("UTF8");
 
     // 查詢自己的好友
-    $stmt = $link->prepare("SELECT friends FROM user WHERE uid = ?");
-    $stmt->bind_param("i", $uid);
+    $stmt = $link->prepare("SELECT friends FROM user WHERE username = ?");
+    $stmt->bind_param("s", $name);
     $stmt->execute();
     $stmt->bind_result($friends);
     $stmt->fetch();
     $stmt->close();
-
     mysqli_close($link);
     return $friends;
 }
