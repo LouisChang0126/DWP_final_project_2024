@@ -33,7 +33,7 @@
                </div>
             </div>
             <div class="section hidden">
-               <h2>User's Availability</h2>
+               <h2 id="str_user_avail">User's Availability</h2>
                <div class="row_container">
                   <p style="margin:10px">Unavailable</p>
                   <table width="30" height="10" border="0" cellspacing="0" cellpadding="0">
