@@ -4,34 +4,37 @@ var des = document.getElementsByClassName('user-description')[0];
 var table = create_table();
 container.appendChild(table);
 
-
-let isEditing = false;
+var isEditing = false;
 
 btn.addEventListener('click', function()
 {
     if (!isEditing)
     {
-        for (var i = 0; i < table.rows.length; i++)
+        for (var i = 1; i < table.rows.length; i++)
         {
-            for (var j = 0; j < table.rows[i].cells.length; j++)
+            for (var j = 1; j < table.rows[i].cells.length; j++)
             {
                 table.rows[i].cells[j].classList.add('clickable');
             }
         }
+        btn.style.backgroundColor = "#28a745";
         des.contentEditable = true;
+        des.style.color = "gray";
         btn.innerHTML = 'Save';
         isEditing = true;
     }
     else
     {
-        for (var i = 0; i < table.rows.length; i++)
+        for (var i = 1; i < table.rows.length; i++)
         {
-            for (var j = 0; j < table.rows[i].cells.length; j++)
+            for (var j = 1; j < table.rows[i].cells.length; j++)
             {
                 table.rows[i].cells[j].classList.remove('clickable');
             }
         }
+        btn.style.backgroundColor = "steelblue";
         des.contentEditable = false;
+        des.style.color = "white";
         btn.innerHTML = 'Edit';
         isEditing = false;
     }
