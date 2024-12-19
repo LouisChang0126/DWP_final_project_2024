@@ -8,8 +8,6 @@
         <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
         <link rel="icon" type="image/jpg" href="./images/sad_tako.png">
         <link rel="stylesheet" type="text/css" href = "./css/home.css">
-        <script src="./js/home.js"></script>
-        <script src="./js/check_login.js"></script>
     </head>
 
     <body>
@@ -29,7 +27,7 @@
                 <h2>Friends</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
-                <div class="scroll">
+                <div class="scroll" id="friend-scroll">
                     <div class="block">
                         <img src="./images/avatar1.png" alt="Avatar">
                         <h2>Sytwu</h2>
@@ -117,193 +115,6 @@
                <a href="#" class="menu_item" id="logout" ><i class="fa fa-sign-out-alt"    id="logout" ></i><span id="logout" >Logout</span></a>
                <a href="#" class="menu_item" id="about"  ><i class="fa fa-question-circle" id="about"  ></i><span id="about"  >About</span></a>
             </div>
-
-            <div class="pop-up-windows">
-                <div class="pop-up-window" id="Sytwu">
-                    <div class="pop-up-content" style="overflow-y:auto; max-height:65%">
-                        <span class="close">&times;</span>
-                        <h1>Sytwu's Schedule</h1>
-                        <hr class="soft" style="width:80%;">
-                        
-                        <div class="table_container">
-                            <table class="availability-table">
-                                <thead>
-                                    <tr>
-                                        <th class="first"></th>
-                                        <th>Sun</th>
-                                        <th>Mon</th>
-                                        <th>Tue</th>
-                                        <th>Wed</th>
-                                        <th>Thu</th>
-                                        <th>Fri</th>
-                                        <th>Sat</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>9:00 AM</td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>10:00 AM</td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>11:00 AM</td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="pop-up-window" id="Louis">
-                    <div class="pop-up-content" style="overflow-y:auto; max-height:65%">
-                        <span class="close">&times;</span>
-                        <h1>Louis's Schedule</h1>
-                        <hr class="soft" style="width:80%;">
-                        
-                        <div class="table_container">
-                            <table class="availability-table">
-                                <thead>
-                                    <tr>
-                                        <th class="first"></th>
-                                        <th>Sun</th>
-                                        <th>Mon</th>
-                                        <th>Tue</th>
-                                        <th>Wed</th>
-                                        <th>Thu</th>
-                                        <th>Fri</th>
-                                        <th>Sat</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>9:00 AM</td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="unavailable"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>10:00 AM</td>
-                                        <td class="unavailable"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="unavailable"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>11:00 AM</td>
-                                        <td class="unavailable"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="unavailable"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-
-                <div class="pop-up-window" id="Darren">
-                    <div class="pop-up-content" style="overflow-y:auto; max-height:65%">
-                        <span class="close">&times;</span>
-                        <h1>Darren's Schedule</h1>
-                        <hr class="soft" style="width:80%;">
-                        
-                        <div class="table_container">
-                            <table class="availability-table">
-                                <thead>
-                                    <tr>
-                                        <th class="first"></th>
-                                        <th>Sun</th>
-                                        <th>Mon</th>
-                                        <th>Tue</th>
-                                        <th>Wed</th>
-                                        <th>Thu</th>
-                                        <th>Fri</th>
-                                        <th>Sat</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>9:00 AM</td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>10:00 AM</td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>11:00 AM</td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
         </main>
 
         <footer>
@@ -313,5 +124,7 @@
         <script src="./js/side_bar.js"></script>
         <script src="./js/popup.js"></script>
         <script src="./js/edit_table.js"></script>
+        <script src="./js/home.js"></script>
+        <script src="./js/check_login.js"></script>
     </body>
 </html>
