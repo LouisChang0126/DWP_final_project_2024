@@ -20,6 +20,8 @@
                 <h2>New Event</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
+                <button onclick="window.location.href = 'creat.php';">Create</button>
+                <br>
             </div>
 
             <div class="section hidden" id="friend">
@@ -42,7 +44,7 @@
                 <h2>Logout</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
-                <button onclick=btnLogout()>Logout</button>
+                <button onclick="window.location.href = 'logout.php';">Logout</button>
                 <br>
             </div>
 
@@ -87,7 +89,6 @@
         <script src="./js/side_bar.js"></script>
         <script src="./js/popup.js"></script>
         <script src="./js/edit_table.js"></script>
-        <script src="./js/home.js"></script>
         <script src="./js/check_login.js"></script>
     </body>
 </html>
