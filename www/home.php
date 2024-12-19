@@ -16,7 +16,6 @@
         </header>
 
         <main>
-            <script>checkLoginStatus()</script>
             <div class="section hidden" id="add">
                 <h2>New Event</h2>
                 <hr class="soft" style="width:50%;">

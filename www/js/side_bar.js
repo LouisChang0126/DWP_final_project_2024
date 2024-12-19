@@ -70,7 +70,7 @@ function friends() {
                     <div class="block">
                         <img src="./images/avatar1.png" alt="Avatar">
                         <h2>${key}</h2>
-                        <button type="button" class="btn" onclick="popupSchedule(${value})">Schedule</button>
+                        <button type="button" class="btn" onclick="popupSchedule('${key}',${value})">Schedule</button>
                     </div>
                 `
             });
@@ -86,12 +86,14 @@ function history() {
             const jsonObject = JSON.parse(data);
             history_scroll = document.getElementById("history-scroll");
             Object.entries(jsonObject).forEach(([key, value]) => {
+                const users = value['user'].join(', ');
+                const tid = value['id'];
                 history_scroll.innerHTML += `
                     <hr class="divider">
                     <div class="block history-item">
                         <h1>${key}</h1>
-                        <h3>Participants, Another one, And another one, Homeless, Me</h3>
-                        <button type="button" class="btn"  onclick="location.href='event.php?${value}'">Link</button>
+                        <h3>${users}</h3>
+                        <button type="button" class="btn"  onclick="location.href='event.php?${tid}'">Link</button>
                     </div>
                 `
             });

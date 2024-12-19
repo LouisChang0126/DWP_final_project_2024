@@ -27,7 +27,7 @@ function get_others_quicktable(uid) {
         });
     });
 }
-async function popupSchedule(uid) {
+async function popupSchedule(username, uid) {
     // 抓取資料庫
     try {
         const tb = await get_others_quicktable(uid);
@@ -48,7 +48,7 @@ async function popupSchedule(uid) {
         childElement.innerHTML = `
             <div class="pop-up-content" style="overflow-y:auto; max-height:65%">
                 <span class="close" onclick="kill_popupSchedule()">&times;</span>
-                <h1>Sytwu's Schedule</h1>
+                <h1>${username}'s Schedule</h1>
                 <hr class="soft" style="width:80%;">
                 <div class="table_container">
                     <table class="availability-table">
