@@ -49,21 +49,18 @@
             </div>
 
             <div class="section" id="about">
-                <h2>About</h2>
-                <hr class="soft" style="width:50%;">
                 <div class="user-info-container">
                     <div class="user-left">
                         <img src="./images/avatar1.png" alt="User Avatar" class="user-avatar" style="width:70%; height:auto">
                         <h1 class="user-name" id="loginUsername">User Name</h1>
                         <p class="user-email" style="font-size:16px" id="loginEmail">example@example.com</p>
+                        <button type="button" class="edit-button" onclick="edit_quick_table()">Edit</button>
                     </div>
                     <div class="user-right">
-                        <h1>Your Schedule</h1>
                         <div class="table_container" id="user_schedule">
                         </div>
                     </div>
                 </div>
-                <button type="button" class="edit-button" onclick="edit_quick_table()">Edit</button>
             </div>
 
             <input type="checkbox" id="check1">

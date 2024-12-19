@@ -389,6 +389,7 @@ div.textbox p {
 }
 
 span.close {
+    position: absolute;
     align-self: flex-end;
     color: #aaa;
     float: right;
@@ -416,29 +417,26 @@ span.close {
 
 table {
     border-collapse: collapse;
-    width: 100%;
     margin: 10px 0;
     color: white;
     text-align: center;
-    font-size: 9px;
+    font-size: 14px;
 }
 
 thead th {
     background-color: black;
     color: white;
-    padding: 10px;
+    padding: 9px;
     border: 1px solid white;
-    font-size: 16px;
 }
 
 tbody td {
     border: 1px solid white;
-    width: 50px;
-    height: 10px;
+    width: 60px;
 }
 
 .availability-table .first {
-    width: 30px;
+    width: 40px;
 }
 
 .availability-table .unavailable {
@@ -454,8 +452,8 @@ tbody td {
 }
 
 .user-info-container {
-    width: 60%;
-    height: 60%;
+    width: 80%;
+    height: 90%;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -504,13 +502,13 @@ tbody td {
     max-height: 60px;
     overflow-y: auto;
 
-    word-break: break-word; /* 防止文字超出範圍 */
-    white-space: pre-wrap; /* 讓文字換行並保留空白 */
+    word-break: break-word;
+    white-space: pre-wrap;
 }
 
 .edit-button {
     background-color: steelblue;
-    margin: 1%;
+    margin: 5%;
     color: white;
     border: none;
     border-radius: 5px;
