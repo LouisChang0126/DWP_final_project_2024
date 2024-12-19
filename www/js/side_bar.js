@@ -95,7 +95,7 @@ function history() {
                     <div class="block history-item">
                         <h1>${key}</h1>
                         <h3>${users}</h3>
-                        <button type="button" class="btn"  onclick="location.href='event.php?${tid}'">Link</button>
+                        <button type="button" class="btn"  onclick="location.href='event.php?event_id=${tid}'">Link</button>
                     </div>
                 `
             });
