@@ -20,7 +20,7 @@
                 <h2>New Event</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
-                <button onclick="window.location.href = 'creat.php';">Create</button>
+                <button onclick="window.location.href = 'create.php';">Create</button>
                 <br>
             </div>
 
