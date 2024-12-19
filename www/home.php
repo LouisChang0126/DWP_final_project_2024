@@ -30,18 +30,20 @@
                 <hr class="soft" style="width:50%;">
                 <br>
                 <div class="scroll">
-                    <div class="block" style="background-color: darkcyan">
+                    <div class="block">
                         <img src="./images/avatar1.png" alt="Avatar">
                         <h2>Sytwu</h2>
                         <button type="button" class="btn">Schedule</button>
                         
                     </div>
-                    <div class="block"  style="background-color:darkgreen">
+                    <hr class="divider">
+                    <div class="block">
                         <img src="./images/avatar1.png" alt="Avatar">
                         <h2>Louis</h2>
                         <button type="button" class="btn">Schedule</button>
                     </div>
-                    <div class="block" style="background-color: darkmagenta">
+                    <hr class="divider">
+                    <div class="block">
                         <img src="./images/avatar1.png" alt="Avatar">
                         <h2>Darren</h2>
                         <button type="button" class="btn">Schedule</button>
@@ -54,21 +56,21 @@
                 <hr class="soft" style="width:50%;">
                 <br>
                 <div class="scroll">
-                    <div class="block history-item" style="background-color: palevioletred">
+                    <div class="block history-item">
                         <h1>Event1</h1>
-                        <p>Participants, Another one, And another one, Homeless, Me</p>
+                        <h3>Participants, Another one, And another one, Homeless, Me</h3>
                         <button type="button" class="btn">Link</button>
                     </div>
                     <hr class="divider">
-                    <div class="block history-item" style="background-color: peachpuff">
+                    <div class="block history-item">
                         <h1>Event2</h1>
-                        <p>Participants</p>
+                        <h3>Participants</h3>
                         <button type="button" class="btn">Link</button>
                     </div>
                     <hr class="divider">
-                    <div class="block history-item" style="background-color: sandybrown">
+                    <div class="block history-item">
                         <h1>Event3</h1>
-                        <p>Participants</p>
+                        <h3>Participants</h3>
                         <button type="button" class="btn">Link</button>
                     </div>
                 </div>
@@ -90,9 +92,61 @@
                         <img src="./images/avatar1.png" alt="User Avatar" class="user-avatar" style="width:70%; height:auto">
                         <h1 class="user-name" id="loginUsername">User Name</h1>
                         <p class="user-email" style="font-size:16px" id="loginEmail">example@example.com</p>
+                        <p class="user-description" style="font-size:20px">This is a brief description about the yourself.</p>
                     </div>
-                    <div class="user-right"style="background-color: sandybrown">
-                        <p class="user-description">This is a brief description about the yourself. It can be edited by clicking the edit button below.</p>
+                    <div class="user-right">
+                    <div class="table_container">
+                            <table class="availability-table">
+                                <thead>
+                                    <tr>
+                                        <th class="first"></th>
+                                        <th>Sun</th>
+                                        <th>Mon</th>
+                                        <th>Tue</th>
+                                        <th>Wed</th>
+                                        <th>Thu</th>
+                                        <th>Fri</th>
+                                        <th>Sat</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>9:00 AM</td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                        <td class="unavailable"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>10:00 AM</td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                    </tr>
+                                </tbody>
+                                <tbody>
+                                    <tr>
+                                        <td>11:00 AM</td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                        <td class="available"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
                         <button type="button" class="edit-button">Edit</button>
                     </div>
                 </div>
