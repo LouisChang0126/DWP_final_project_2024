@@ -46,7 +46,7 @@ async function popupSchedule(username, uid) {
 
         // 彈窗內容的標題部分
         childElement.innerHTML = `
-            <div class="pop-up-content" style="overflow-y:auto; max-height:65%">
+            <div class="pop-up-content" style="max-height:80%">
                 <span class="close" onclick="kill_popupSchedule()">&times;</span>
                 <h1>${username}'s Schedule</h1>
                 <hr class="soft" style="width:80%;">
