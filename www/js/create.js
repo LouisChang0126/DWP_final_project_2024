@@ -48,16 +48,16 @@ function create_table()
         const monthCell = document.createElement('td');
         const currentDate = new Date(startDate);
         currentDate.setDate(currentDate.getDate() + week * 7);
-        monthCell.textContent = currentDate.toLocaleString('en-US', { month: 'short' }); // 月份
+        monthCell.textContent = currentDate.toLocaleString('en-US', { month: 'short' });
         row.appendChild(monthCell);
 
         for (let day = 0; day < 7; day++)
         {
             const cell = document.createElement('td');
-            cell.classList.add('unavailable'); // 預設加上 unavailable
+            cell.classList.add('unavailable');
             const date = new Date(startDate);
             date.setDate(date.getDate() + week * 7 + day);
-            cell.textContent = date.getDate(); // 只顯示「日期」
+            cell.textContent = date.getDate();
             row.appendChild(cell);
         }
 

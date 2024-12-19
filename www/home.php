@@ -95,61 +95,12 @@
                         <p class="user-description" style="font-size:20px">This is a brief description about the yourself.</p>
                     </div>
                     <div class="user-right">
-                    <div class="table_container">
-                            <table class="availability-table">
-                                <thead>
-                                    <tr>
-                                        <th class="first"></th>
-                                        <th>Sun</th>
-                                        <th>Mon</th>
-                                        <th>Tue</th>
-                                        <th>Wed</th>
-                                        <th>Thu</th>
-                                        <th>Fri</th>
-                                        <th>Sat</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td>9:00 AM</td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                        <td class="unavailable"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>10:00 AM</td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                    </tr>
-                                </tbody>
-                                <tbody>
-                                    <tr>
-                                        <td>11:00 AM</td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                        <td class="available"></td>
-                                    </tr>
-                                </tbody>
-                            </table>
+                        <h1>Your Schedule</h1>
+                        <div class="table_container" id="user_schedule">
                         </div>
-                        <button type="button" class="edit-button">Edit</button>
                     </div>
                 </div>
+                <button type="button" class="edit-button">Edit</button>
             </div>
 
             <input type="checkbox" id="check1">
@@ -361,5 +312,6 @@
         <script src="./js/tab_ctrl.js"></script>
         <script src="./js/side_bar.js"></script>
         <script src="./js/popup.js"></script>
+        <script src="./js/edit_table.js"></script>
     </body>
 </html>

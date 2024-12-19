@@ -449,6 +449,10 @@ tbody td {
     background-color: #28a745;
 }
 
+.availability-table .clickable {
+    cursor: pointer;
+}
+
 .user-info-container {
     width: 60%;
     height: 60%;
@@ -506,6 +510,7 @@ tbody td {
 
 .edit-button {
     background-color: steelblue;
+    margin: 1%;
     color: white;
     border: none;
     border-radius: 5px;
