@@ -76,7 +76,9 @@ function others_quicktable($uid) {
     return $quick_table;
 }
 
-function edit_quicktable($json, $username) {
+function edit_quicktable($jsonAndUsername) {
+    list($jsonPart, $namePart) = explode('###', $jsonAndUsername, 2);
+
     $link = mysqli_connect("localhost", "root", "", "dwp_final");
     if (!$link) {
         die("Database connection failed: " . mysqli_connect_error());
@@ -84,13 +86,13 @@ function edit_quicktable($json, $username) {
     $link->set_charset("UTF8");
 
     // 檢查 JSON 格式是否有效
-    if (!is_string($json) || json_decode($json) === null) {
+    if (!is_string($jsonPart) || json_decode($jsonPart) === null) {
         mysqli_close($link);
         return "error";
     }
 
     $stmt = $link->prepare("UPDATE user SET quick_table = ? WHERE username = ?");
-    $stmt->bind_param("ss", $json, $username);
+    $stmt->bind_param("ss", $jsonPart, $namePart);
     $result = $stmt->execute();
     $stmt->close();
 

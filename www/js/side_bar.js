@@ -23,9 +23,6 @@ menuItems.forEach(item =>
             else if (targetId === "history"){
                 history();
             }
-            else if (targetId === "about"){
-                about();
-            }
         }
     });
 });
@@ -97,26 +94,6 @@ function history() {
                         <button type="button" class="btn"  onclick="location.href='event.php?${value}'">Link</button>
                     </div>
                 `
-            });
-        } catch (error) {
-            console.error("無效的 JSON 字串:", error);
-        }
-    });
-}
-
-function about() {
-    sendAjaxRequest('about', document.getElementById("loginUsername").innerText, function(data) {
-        try {
-            const jsonObject = JSON.parse(data);
-            // history_scroll = document.getElementById("history-scroll");
-            Object.entries(jsonObject).forEach(([key, value]) => {
-                // history_scroll.innerHTML = `
-                //     <div class="block history-item">
-                //         <h1>${key}</h1>
-                //         <h3>Participants, Another one, And another one, Homeless, Me</h3>
-                //         <button type="button" class="btn">Link</button>
-                //     </div>
-                // `
             });
         } catch (error) {
             console.error("無效的 JSON 字串:", error);

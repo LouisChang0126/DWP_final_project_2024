@@ -1,41 +1,28 @@
-var btn = document.getElementsByClassName('edit-button')[0];
-var des = document.getElementsByClassName('user-description')[0];
+var table = document.getElementById('user_schedule');
 
 var isEditing = false;
 
-btn.addEventListener('click', function()
-{
-    if (!isEditing)
-    {
-        for (var i = 1; i < table.rows.length; i++)
-        {
-            for (var j = 1; j < table.rows[i].cells.length; j++)
-            {
-                table.rows[i].cells[j].classList.add('clickable');
-            }
-        }
+function edit_quick_table(){
+    const allTdElements = document.querySelectorAll("table.availability-table td");
+    var btn = document.getElementsByClassName('edit-button')[0];
+    if (!isEditing){
+        allTdElements.forEach(td => {
+            td.classList.add("clickable");
+        });
         btn.style.backgroundColor = "#28a745";
-        des.contentEditable = true;
-        des.style.color = "gray";
         btn.innerHTML = 'Save';
         isEditing = true;
     }
-    else
-    {
-        for (var i = 1; i < table.rows.length; i++)
-        {
-            for (var j = 1; j < table.rows[i].cells.length; j++)
-            {
-                table.rows[i].cells[j].classList.remove('clickable');
-            }
-        }
+    else{
+        allTdElements.forEach(td => {
+            td.classList.remove("clickable");
+        });
         btn.style.backgroundColor = "steelblue";
-        des.contentEditable = false;
-        des.style.color = "white";
         btn.innerHTML = 'Edit';
         isEditing = false;
+        update_db_quick_table()
     }
-});
+}
 
 document.addEventListener("click", function(event)
 {
@@ -47,10 +34,8 @@ document.addEventListener("click", function(event)
     }
 });
 
-function create_table(quick_table)
-{
+function create_table(quick_table){
     const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-    const times = ['9:00 AM', '10:00 AM', '11:00 AM', '12:00 PM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM'];
 
     const table = document.createElement('table');
     table.classList.add('availability-table');
@@ -91,24 +76,45 @@ function create_table(quick_table)
         tbody.appendChild(row);
     });
 
-    // times.forEach(time =>
-    // {
-    //     const row = document.createElement('tr');
-    //     const timeCell = document.createElement('td');
-    //     timeCell.textContent = time;
-    //     row.appendChild(timeCell);
-
-    //     days.forEach(() => 
-    //     {
-    //         const cell = document.createElement('td');
-    //         cell.classList.add('unavailable');
-    //         row.appendChild(cell);
-    //     });
-
-    //     tbody.appendChild(row);
-    // });
-
     table.appendChild(tbody);
 
     return table;
+}
+
+function update_db_quick_table(){
+    var username = document.getElementById("loginUsername").innerText;
+    var json_str = JSON.stringify(quick_table_json());
+    sendAjaxRequest('edit_quicktable', json_str+'###'+username, function(data) {
+        console.log(data);
+    });
+}
+
+function quick_table_json() { 
+    const allTrElements = document.querySelectorAll("table.availability-table tr");
+
+    // 初始化 JSON 結構
+    const tableJson = {};
+
+    // 獲取表頭中的星期名稱
+    const days = Array.from(allTrElements[0].querySelectorAll("th"))
+        .slice(1) // 排除第一個空白列標題
+        .map(th => th.textContent.trim()); // 提取文字並去掉空格
+
+    // 遍歷每一行，從第二行開始處理時間及可用性
+    allTrElements.forEach((tr, index) => {
+        if (index === 0) return; // 跳過表頭行
+
+        // 獲取時間（第一列）
+        const time = tr.querySelector("td").textContent.trim();
+
+        // 獲取此行的所有可用性數據
+        const availability = Array.from(tr.querySelectorAll("td"))
+            .slice(1) // 排除第一列時間
+            .map(td => (td.classList.contains("available") ? 1 : 0)); // 判斷可用性
+
+        // 將時間和可用性數據添加到 JSON
+        tableJson[time] = availability;
+    });
+
+    return tableJson;
 }

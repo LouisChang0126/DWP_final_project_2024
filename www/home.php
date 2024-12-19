@@ -90,7 +90,6 @@
                         <img src="./images/avatar1.png" alt="User Avatar" class="user-avatar" style="width:70%; height:auto">
                         <h1 class="user-name" id="loginUsername">User Name</h1>
                         <p class="user-email" style="font-size:16px" id="loginEmail">example@example.com</p>
-                        <p class="user-description" style="font-size:20px">This is a brief description about the yourself.</p>
                     </div>
                     <div class="user-right">
                         <h1>Your Schedule</h1>
@@ -98,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <button type="button" class="edit-button">Edit</button>
+                <button type="button" class="edit-button" onclick="edit_quick_table()">Edit</button>
             </div>
 
             <input type="checkbox" id="check1">
