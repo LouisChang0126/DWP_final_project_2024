@@ -2,16 +2,15 @@ var btn = document.getElementById('confirm');
 
 btn.addEventListener('click', function()
 {
-    var sections = document.querySelectorAll('.section');
-    sections.forEach(section =>
-    {
-        section.classList.remove('hidden');
-        if (section.id === 'signin')
-        {
-            section.classList.add('hidden');
-        }
-    });
-    btn.classList.add('hidden');
+    const name = document.querySelector('input[name="Name"]').value;
+    const password = document.querySelector('input[name="Password"]').value;
+    
+    if (!name) {
+        alert('Please enter your name');
+        return;
+    }
+    
+    validateSignIn(event_id, name, password);
 });
 
 
@@ -213,6 +212,7 @@ function interpolateColor(startHex, endHex, factor)
     return rgbToHex(...interpolatedRgb);
 }
 
+// Compose the group timetable from participating users avaliability
 function updateGroupTimetable(event_id) {
     fetch(`get_event_data.php?event_id=${event_id}`)
         .then(response => response.json())
@@ -265,10 +265,65 @@ function updateGroupTimetable(event_id) {
         .catch(error => console.error('Error:', error));
 }
 
-// Call the initialization function when the page loads
+// Call the function when the page loads
 document.addEventListener('DOMContentLoaded', function() {
     const event_id = new URLSearchParams(window.location.search).get('event_id');
     if (event_id) {
         updateGroupTimetable(event_id);
     }
 });
+
+// User sign-in validation
+function validateSignIn(event_id, name, password) {
+    fetch(`get_event_data.php?event_id=${event_id}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                const guestdata = data.data.guestdata;
+                const guest = guestdata[name];
+
+                if (guest) {
+                    // Guest exists, check password
+                    if (!password || guest.pw === password) {
+                        showAvailability(guest, name);
+                    } else {
+                        alert('Incorrect password');
+                    }
+                }
+            }
+        });
+}
+
+function showAvailability(user, userName) {
+    // Get DOM elements
+    const signinSection = document.getElementById('signin');
+    const confirmBtn = document.getElementById('confirm');
+    const nameDisplay = document.getElementById('str_user_avail');
+
+    // Hide signin section and confirm button
+    signinSection.classList.add('hidden');
+    confirmBtn.classList.add('hidden');
+    
+    // Show other sections
+    document.querySelectorAll('.section').forEach(section => {
+        if (section.id !== 'signin') {
+            section.classList.remove('hidden');
+        }
+    });
+
+    // Display user's name
+    nameDisplay.textContent = userName + "'s Availability";
+
+    // Load guest's existing availability
+    if (user.avail) {
+        user.avail.forEach((timeSlot, timeIndex) => {
+            timeSlot.forEach((available, dateIndex) => {
+                if (available) {
+                    const cell = UT.rows[timeIndex + 1].cells[dateIndex + 1];
+                    cell.classList.remove('unavailable');
+                    cell.classList.add('available');
+                }
+            });
+        });
+    }
+}
