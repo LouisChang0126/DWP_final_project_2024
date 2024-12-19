@@ -88,8 +88,8 @@
                 <div class="user-info-container">
                     <div class="user-left">
                         <img src="./images/avatar1.png" alt="User Avatar" class="user-avatar" style="width:70%; height:auto">
-                        <h1 class="user-name", id=loginUserName>User Name</h1>
-                        <p class="user-email" style="font-size:16px">example@example.com</p>
+                        <h1 class="user-name" id="loginUsername">User Name</h1>
+                        <p class="user-email" style="font-size:16px" id="loginEmail">example@example.com</p>
                     </div>
                     <div class="user-right"style="background-color: sandybrown">
                         <p class="user-description">This is a brief description about the yourself. It can be edited by clicking the edit button below.</p>
