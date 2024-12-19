@@ -64,6 +64,7 @@ function friends() {
         try {
             const jsonObject = JSON.parse(data);
             friend_scroll = document.getElementById("friend-scroll");
+            friend_scroll.innerHTML = "";
             Object.entries(jsonObject).forEach(([key, value]) => {
                 friend_scroll.innerHTML += `
                     <hr class="divider">
@@ -85,6 +86,7 @@ function history() {
         try {
             const jsonObject = JSON.parse(data);
             history_scroll = document.getElementById("history-scroll");
+            history_scroll.innerHTML = "";
             Object.entries(jsonObject).forEach(([key, value]) => {
                 const users = value['user'].join(', ');
                 const tid = value['id'];

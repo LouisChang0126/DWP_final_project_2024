@@ -27,24 +27,6 @@
                 <hr class="soft" style="width:50%;">
                 <br>
                 <div class="scroll" id="friend-scroll">
-                    <div class="block">
-                        <img src="./images/avatar1.png" alt="Avatar">
-                        <h2>Sytwu</h2>
-                        <button type="button" class="btn">Schedule</button>
-                        
-                    </div>
-                    <hr class="divider">
-                    <div class="block">
-                        <img src="./images/avatar1.png" alt="Avatar">
-                        <h2>Louis</h2>
-                        <button type="button" class="btn">Schedule</button>
-                    </div>
-                    <hr class="divider">
-                    <div class="block">
-                        <img src="./images/avatar1.png" alt="Avatar">
-                        <h2>Darren</h2>
-                        <button type="button" class="btn">Schedule</button>
-                    </div>
                 </div>
             </div>
 
@@ -53,23 +35,6 @@
                 <hr class="soft" style="width:50%;">
                 <br>
                 <div class="scroll" id="history-scroll">
-                    <div class="block history-item">
-                        <h1>Event1</h1>
-                        <h3>Participants, Another one, And another one, Homeless, Me</h3>
-                        <button type="button" class="btn">Link</button>
-                    </div>
-                    <hr class="divider">
-                    <div class="block history-item">
-                        <h1>Event2</h1>
-                        <h3>Participants</h3>
-                        <button type="button" class="btn">Link</button>
-                    </div>
-                    <hr class="divider">
-                    <div class="block history-item">
-                        <h1>Event3</h1>
-                        <h3>Participants</h3>
-                        <button type="button" class="btn">Link</button>
-                    </div>
                 </div>
             </div>
 
