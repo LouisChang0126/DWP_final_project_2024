@@ -53,7 +53,7 @@
                 <h2>History</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
-                <div class="scroll">
+                <div class="scroll" id="history-scroll">
                     <div class="block history-item">
                         <h1>Event1</h1>
                         <h3>Participants, Another one, And another one, Homeless, Me</h3>

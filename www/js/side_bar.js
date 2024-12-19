@@ -32,9 +32,9 @@ menuItems.forEach(item =>
 
 
 //ajax
-function sendAjaxRequest(action, callback) {
+function sendAjaxRequest(action, para, callback) {
     const xhr = new XMLHttpRequest();
-    xhr.open('POST', 'test_ajax.php', true);
+    xhr.open('POST', 'home_ajax.php', true);
     xhr.setRequestHeader('Content-Type', 'application/json');
     xhr.onreadystatechange = function() {
         if (xhr.readyState === XMLHttpRequest.DONE) {
@@ -57,19 +57,20 @@ function sendAjaxRequest(action, callback) {
     };
     const data = {
         action: action,
-        parameter: document.getElementById("loginUsername").innerText
+        parameter: para
     };
     xhr.send(JSON.stringify(data));
 }
 
 function friends() {
-    sendAjaxRequest('friends', function(data) {
+    sendAjaxRequest('friends', document.getElementById("loginUsername").innerText, function(data) {
         try {
             const jsonObject = JSON.parse(data);
             friend_scroll = document.getElementById("friend-scroll");
             Object.entries(jsonObject).forEach(([key, value]) => {
-                friend_scroll.innerHTML += `
-                    <div class="block" style="background-color: darkcyan">
+                friend_scroll.innerHTML = `
+                    <hr class="divider">
+                    <div class="block">
                         <img src="./images/avatar1.png" alt="Avatar">
                         <h2>${key}</h2>
                         <button type="button" class="btn" onclick="popupSchedule(${value})">Schedule</button>
@@ -83,13 +84,41 @@ function friends() {
 }
 
 function history() {
-    sendAjaxRequest('history', function(data) {
-        // document.getElementById('output').textContent = `Session Data: ${data}`;
+    sendAjaxRequest('history', document.getElementById("loginUsername").innerText, function(data) {
+        try {
+            const jsonObject = JSON.parse(data);
+            history_scroll = document.getElementById("history-scroll");
+            Object.entries(jsonObject).forEach(([key, value]) => {
+                history_scroll.innerHTML = `
+                    <div class="block history-item">
+                        <h1>${key}</h1>
+                        <h3>Participants, Another one, And another one, Homeless, Me</h3>
+                        <button type="button" class="btn"  onclick="location.href='event.php?${value}'">Link</button>
+                    </div>
+                `
+            });
+        } catch (error) {
+            console.error("無效的 JSON 字串:", error);
+        }
     });
 }
 
 function about() {
-    sendAjaxRequest('about', function(data) {
-        // document.getElementById('output').textContent = `Session Data: ${data}`;
+    sendAjaxRequest('about', document.getElementById("loginUsername").innerText, function(data) {
+        try {
+            const jsonObject = JSON.parse(data);
+            // history_scroll = document.getElementById("history-scroll");
+            Object.entries(jsonObject).forEach(([key, value]) => {
+                // history_scroll.innerHTML = `
+                //     <div class="block history-item">
+                //         <h1>${key}</h1>
+                //         <h3>Participants, Another one, And another one, Homeless, Me</h3>
+                //         <button type="button" class="btn">Link</button>
+                //     </div>
+                // `
+            });
+        } catch (error) {
+            console.error("無效的 JSON 字串:", error);
+        }
     });
 }
