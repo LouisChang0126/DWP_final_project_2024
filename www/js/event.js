@@ -56,20 +56,20 @@ update_table(GT, GTI);
 // Add event listener to each cell
 document.addEventListener('click', function(object)
 {
-    classes = object.target.classList;
-    if (classes.contains('available'))
-    {
-        classes.remove('available');
-        classes.add('unavailable');
-    }
-    else if (classes.contains('unavailable'))
-    {
-        classes.remove('unavailable');
-        classes.add('available');
-    }
+    const cell = object.target;
+    if (cell.classList.contains('available') || cell.classList.contains('unavailable')) {
+        // Toggle cell state
+        cell.classList.toggle('available');
+        cell.classList.toggle('unavailable');
+        
+        // Update group table
+        UTI = get_table_info(UT);
+        update_table(GT, add_array(UTI, GTI));
 
-    UTI = get_table_info(UT);
-    update_table(GT, add_array(UTI, GTI));
+        // Send update to server
+        const userName = document.querySelector('input[name="Name"]').value;
+        updateUserAvailability(event_id, userName, UTI);
+    }
 });
 
 // Date display formatter
@@ -326,4 +326,24 @@ function showAvailability(user, userName) {
             });
         });
     }
+}
+
+function updateUserAvailability(event_id, userName, availability) {
+    fetch('update_availability.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            event_id: event_id,
+            user_name: userName,
+            availability: availability
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (!data.success) {
+            console.error('Failed to update availability');
+        }
+    });
 }
