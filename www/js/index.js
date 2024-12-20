@@ -1,5 +1,5 @@
 function btnConfirm() {
-	window.location.href = "create.html";
+	window.location.href = "create.php";
 }
 
 function btnLogin() {
