@@ -1,3 +1,6 @@
+var calender = [];
+var chooseDay = [];
+
 document.addEventListener("DOMContentLoaded", function()
 {
     const container = document.querySelector('.table_container');
@@ -13,11 +16,11 @@ document.addEventListener("click", function(event)
     {
         target.classList.toggle('unavailable');
         target.classList.toggle('available');
+        chooseDay = get_table_info();
     }
 });
 
-function create_table()
-{
+function create_table(){
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
     const today = new Date();
@@ -41,8 +44,9 @@ function create_table()
     table.appendChild(thead);
 
     const tbody = document.createElement('tbody');
-    for (let week = 0; week < 4; week++)
-    {
+    tbody.id = 'availability-tbody';
+    for (let week = 0; week < 4; week++){
+        var calender_week = [];
         const row = document.createElement('tr');
 
         const monthCell = document.createElement('td');
@@ -59,11 +63,96 @@ function create_table()
             date.setDate(date.getDate() + week * 7 + day);
             cell.textContent = date.getDate();
             row.appendChild(cell);
+            calender_week.push(date.getFullYear()+String(date.getMonth() + 1).padStart(2, '0')+String(date.getDate()).padStart(2, '0'));
         }
 
         tbody.appendChild(row);
+        calender.push(calender_week);
     }
     table.appendChild(tbody);
 
     return table;
+}
+
+function get_table_info(){
+    var table = document.getElementById("availability-tbody");
+    var info = [];
+    for (var i = 0; i < table.rows.length; i++)    {
+        var row = [];
+        for (var j = 1; j < table.rows[i].cells.length; j++){
+            if(table.rows[i].cells[j].classList.contains('available')){
+                info.push(calender[i][j-1]);
+            }
+        }
+    }
+    // console.log(info);
+    return info;
+}
+
+//ajax
+function sendAjaxRequest(action, para, callback) {
+    const xhr = new XMLHttpRequest();
+    xhr.open('POST', 'create_ajax.php', true);
+    xhr.setRequestHeader('Content-Type', 'application/json');
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === XMLHttpRequest.DONE) {
+            if (xhr.status === 200) {
+                try {
+                    const response = JSON.parse(xhr.responseText);
+                    if (response.success) {
+                        callback(response.data);
+                    }
+                    else {
+                        alert('Error: ' + response.message);
+                    }
+                } catch (e) {
+                    console.error('Error parsing JSON:', e);
+                    alert('Invalid response from server');
+                }
+            } else {
+                alert('AJAX request failed');
+            }
+        }
+    };
+    const data = {
+        action: action,
+        parameter: para
+    };
+    xhr.send(JSON.stringify(data));
+}
+
+function preFlyCheck(){
+    inputEventName = document.getElementById("inputEventName").value;
+    const earlier = Number(document.querySelector('select[name="NoEarlierThan"]').value);
+    const later = Number(document.querySelector('select[name="NoLaterThan"]').value);
+    // console.log(earlier, later);
+    if(inputEventName === ""){
+        alert("沒有填寫活動名稱!");
+    }
+    else if(chooseDay.length === 0){
+        alert("沒有選要哪天!");
+    }
+    else if(earlier >= later){
+        alert("最晚時間比最早時間早!");
+    }
+    else{ // finish check
+        const timeline = Array.from({ length: later - earlier + 1 }, (_, i) => `${i + earlier}:00`);
+        // console.log(timeline);
+        var send_json = {
+            "metadata": {
+              "times": timeline,
+              "dates": chooseDay
+            }
+        }
+        // console.log(JSON.stringify(send_json)+'###'+inputEventName);
+        sendAjaxRequest('create', JSON.stringify(send_json)+'###'+inputEventName, function(data) {
+            if(Number(data) != -1){
+                // alert("good");
+                window.location.href = 'event.php?event_id=' + data;
+            }
+            else{
+                alert("error");
+            }
+        });
+    }
 }

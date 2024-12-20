@@ -14,8 +14,7 @@
       <header>
          <h1>When2Meet Pro</h1>
       </header>
-      
-      <button>Next >></button>
+      <button onclick="preFlyCheck()">Next >></button>
       <main>
          <div class="container">
             <div class="section">
@@ -23,7 +22,7 @@
                <img src="images/event1.png" alt="event">
                <h2>Event Name</h2>
                <hr class="soft" style="width:50%;">
-               <input type="text" name="EventName" placeholder="Event Name" required>
+               <input id="inputEventName" type="text" name="EventName" placeholder="Event Name" required>
             </div>
             <div class="line"></div>
             <div class="section">
@@ -72,7 +71,6 @@
                      <option value="21">9:00 PM</option>
                      <option value="22">10:00 PM</option>
                      <option value="23">11:00 PM</option>
-                     <option value="0">12:00 AM</option>
                   </select>
                </div>
                <div class="row_container">
@@ -102,13 +100,11 @@
                      <option value="21">9:00 PM</option>
                      <option value="22">10:00 PM</option>
                      <option value="23">11:00 PM</option>
-                     <option value="0">12:00 AM</option>
                   </select>
                </div>
             </div>
          </div>
       </main>
-
       <footer>
          <p>Copyright © 2024 張家睿、司徒立中、蔡欣龍 All Rights Reserved</p>
       </footer>
