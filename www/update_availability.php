@@ -24,4 +24,5 @@ $stmt = $link->prepare("UPDATE timetable SET user_table = ? WHERE id = ?");
 $stmt->bind_param("si", $updated_json, $event_id);
 
 echo json_encode(['success' => $stmt->execute()]);
+$link->close();
 ?>

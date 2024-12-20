@@ -292,11 +292,32 @@ function validateSignIn(event_id, name, password) {
 
                 if (guest) {
                     // Guest exists, check password
-                    if (!password || guest.pw === password) {
+                    if (!guest.pw || guest.pw === password) {
                         showAvailability(guest, name);
                     } else {
                         alert('Incorrect password');
                     }
+                } else {
+                    // Guest does not exist, create new guest
+                    fetch('create_guest.php', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            event_id: event_id,
+                            user_name: name,
+                            user_pw: password
+                        })
+                    })
+                    .then(response => response.json())
+                    .then(data => {
+                        if (data.success) {
+                            showAvailability(data.data, name);
+                        } else {
+                            console.error('Failed to create guest');
+                        }
+                    });
                 }
             }
         });
