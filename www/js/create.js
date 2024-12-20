@@ -125,7 +125,9 @@ function preFlyCheck(){
     inputEventName = document.getElementById("inputEventName").value;
     const earlier = Number(document.querySelector('select[name="NoEarlierThan"]').value);
     const later = Number(document.querySelector('select[name="NoLaterThan"]').value);
-    // console.log(earlier, later);
+    const search = new URLSearchParams(window.location.search);
+    const username = search.get('username');
+    // console.log(username);
     if(inputEventName === ""){
         alert("沒有填寫活動名稱!");
     }
@@ -147,8 +149,19 @@ function preFlyCheck(){
         // console.log(JSON.stringify(send_json)+'###'+inputEventName);
         sendAjaxRequest('create', JSON.stringify(send_json)+'###'+inputEventName, function(data) {
             if(Number(data) != -1){
-                // alert("good");
-                window.location.href = 'event.php?event_id=' + data;
+                if (username) {
+                    sendAjaxRequest('new_history', inputEventName + '###' + Number(data) + '###' + username, function (historyResponse) {
+                        if (Number(historyResponse) !== -1) {
+                            // new_history 成功後跳轉
+                            window.location.href = 'event.php?event_id=' + data;
+                        } else {
+                            alert("新增歷史記錄失敗");
+                        }
+                    });
+                } else {
+                    // 沒有 username，直接跳轉
+                    window.location.href = 'event.php?event_id=' + data;
+                }
             }
             else{
                 alert("error");
