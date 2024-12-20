@@ -233,23 +233,31 @@ function updateGroupTimetable(event_id) {
                 GTI = Array.from({ length: times.length }, () => 
                     Array.from({ length: days.length }, () => 0));
 
-                // Process userdata
-                Object.values(data.data.userdata).forEach(userData => {
-                    userData.avail.forEach((timeSlot, timeIndex) => {
-                        timeSlot.forEach((available, dateIndex) => {
-                            GTI[timeIndex][dateIndex] += available;
-                        });
+                // Process userdata if exists
+                if (data.data?.userdata) {
+                    Object.values(data.data.userdata).forEach(userData => {
+                        if (userData?.avail) {
+                            userData.avail.forEach((timeSlot, timeIndex) => {
+                                timeSlot?.forEach((available, dateIndex) => {
+                                    GTI[timeIndex][dateIndex] += available;
+                                });
+                            });
+                        }
                     });
-                });
+                }
 
-                // Process guestdata
-                Object.values(data.data.guestdata).forEach(guestData => {
-                    guestData.avail.forEach((timeSlot, timeIndex) => {
-                        timeSlot.forEach((available, dateIndex) => {
-                            GTI[timeIndex][dateIndex] += available;
-                        });
+                // Process guestdata if exists
+                if (data.data?.guestdata) {
+                    Object.values(data.data.guestdata).forEach(guestData => {
+                        if (guestData?.avail) {
+                            guestData.avail.forEach((timeSlot, timeIndex) => {
+                                timeSlot?.forEach((available, dateIndex) => {
+                                    GTI[timeIndex][dateIndex] += available;
+                                });
+                            });
+                        }
                     });
-                });
+                }
 
                 // Update DOM
                 UTC.innerHTML = '';
