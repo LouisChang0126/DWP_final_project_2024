@@ -11,8 +11,16 @@ $stmt->execute();
 $result = $stmt->get_result();
 $data = $result->fetch_assoc();
 
+$query = "SELECT name FROM timetable WHERE id = ?";
+$stmt = $link->prepare($query);
+$stmt->bind_param("i", $event_id);
+$stmt->execute();
+$result = $stmt->get_result();
+$name = $result->fetch_assoc();
+
 echo json_encode([
     'success' => true,
+    'name' => $name['name'],
     'data' => json_decode($data['user_table'])
 ]);
 

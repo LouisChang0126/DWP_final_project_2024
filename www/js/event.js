@@ -218,6 +218,9 @@ function updateGroupTimetable(event_id) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
+                // Set event name
+                document.getElementById('eventName').textContent = data.name;
+
                 // Extract metadata
                 const metadata = data.data.metadata;
                 times = metadata.times;

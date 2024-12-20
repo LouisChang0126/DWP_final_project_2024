@@ -59,6 +59,8 @@
             </div>
             <div class="line"></div>
             <div class="section">
+               <h2 id="eventName">Event Information</h2>
+               <br>
                <h2>Group's Availability</h2>
                <div class="row_container" id="display_ratio">
                   <p>
