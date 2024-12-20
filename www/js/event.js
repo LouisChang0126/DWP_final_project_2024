@@ -287,7 +287,7 @@ function validateSignIn(event_id, name, password) {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                const guestdata = data.data.guestdata;
+                const guestdata = data.data.guestdata || {};
                 const guest = guestdata[name];
 
                 if (guest) {
