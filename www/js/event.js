@@ -294,21 +294,20 @@ function validateSignIn(event_id, name, password) {
                 const guest = guestdata[name];
 
                 if (guest) {
-                    // Guest exists, check password
+                    // Guest login handling
                     if (!guest.pw || guest.pw === password) {
                         showAvailability(guest, name);
                     } else {
-                        alert('Incorrect password');
+                        alert('Guest Login: Incorrect password');
                     }
                 } else {
-                    // Guest does not exist, create new guest
-                    fetch('create_guest.php', {
+                    // User login handling
+                    fetch('eventLogin.php', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
                         },
                         body: JSON.stringify({
-                            event_id: event_id,
                             user_name: name,
                             user_pw: password
                         })
@@ -316,14 +315,46 @@ function validateSignIn(event_id, name, password) {
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            showAvailability(data.data, name);
+                            showAvailability({ avail: [] }, name);
                         } else {
-                            console.error('Failed to create guest');
+                            if (data.error_code === 'no_user') {
+                                // User does not exist, create new guest
+                                create_guest(name, password);
+                            } else if (data.error_code === 'wrong_pw') {
+                                alert('User Login: Incorrect password');
+                            } else {
+                                alert(data.error || 'Login failed');
+                            }
                         }
-                    });
+                    })
+                    .catch(error => console.error('Login error:', error));
                 }
+
             }
         });
+}
+
+function create_guest(name, password) {
+    alert("Creating new guest account...");
+    fetch('create_guest.php', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            event_id: event_id,
+            user_name: name,
+            user_pw: password
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            showAvailability(data.data, name);
+        } else {
+            console.error('Failed to create guest');
+        }
+    });
 }
 
 function showAvailability(user, userName) {
@@ -346,7 +377,7 @@ function showAvailability(user, userName) {
     // Display user's name
     nameDisplay.textContent = userName + "'s Availability";
 
-    // Load guest's existing availability
+    // Load user's existing availability
     if (user.avail) {
         user.avail.forEach((timeSlot, timeIndex) => {
             timeSlot.forEach((available, dateIndex) => {
