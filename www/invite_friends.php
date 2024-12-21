@@ -88,7 +88,7 @@ function friends() {
     });
 }
 function invite(friendName, event_id) {
-    alert(friendName+" "+event_id);
+    alert("已寄信邀請"+friendName);
 }
 </script>
    </body>
