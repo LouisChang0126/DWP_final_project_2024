@@ -24,12 +24,22 @@
                 <br>
             </div>
 
+            <div class="section hidden" id="search">
+                <h2>Search Friends</h2>
+                <hr class="soft" style="width:50%;">
+                <br>
+                <input id="inputFriendsEmail" type="text" placeholder="Friend's email" required>
+                <h1 id="search_result"></h1>
+                <button style="margin-top:1%" onclick="search()">Search</button>
+            </div>
+
             <div class="section hidden" id="friend">
                 <h2>Friends</h2>
                 <hr class="soft" style="width:50%;">
                 <br>
                 <div class="scroll" id="friend-scroll">
                 </div>
+                <button class="menu_item" style="margin-top:1%" id="search">Search Friends</button>
             </div>
 
             <div class="section hidden" id="history">
@@ -87,5 +97,7 @@
         <script src="./js/popup.js"></script>
         <script src="./js/edit_table.js"></script>
         <script src="./js/check_login.js"></script>
+        <script src="./js/home.js"></script>
+        <script src="./js/friend.js"></script>
     </body>
 </html>

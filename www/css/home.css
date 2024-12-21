@@ -251,7 +251,7 @@ label #cancel_left{
 }
 
 .scroll {
-    overflow-y: scroll;
+    overflow-y: auto;
     width: 60%;
     height: 70%;
 }
@@ -518,5 +518,15 @@ tbody td {
 
 .edit-button:hover {
     background-color: darkblue;
+}
+
+#inputFriendsEmail {
+    width: 40%;
+    height: 4%;
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid black;
 }
 
