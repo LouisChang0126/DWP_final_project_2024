@@ -56,7 +56,7 @@
                      Remember to appendChild(table) <br>
                   </p>
                </div>
-               <button onclick="friends()" style="left:50%;bottom:5%">Invite!</button>
+               <button onclick="friends()" style="left:90%;bottom:2%">Invite!</button>
             </div>
             <div class="line"></div>
             <div class="section">
