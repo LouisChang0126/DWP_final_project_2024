@@ -66,7 +66,7 @@ function search(){
     }
     else{ // finish check
         sendAjaxRequest('search_friends', inputFriendsEmail, function(data) {
-            if(data){
+            if(data != "###"){
                 const parts = data.split("###");
                 add_friend(parts[0], parts[1]);
                 // document.getElementById("search_result").textContent = data;

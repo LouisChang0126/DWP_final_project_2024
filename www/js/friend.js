@@ -36,7 +36,7 @@ function search(){
     }
     else{ // finish check
         sendAjaxRequest('search_friends', inputFriendsEmail, function(data) {
-            if(data){
+            if(data != "###"){
                 const parts = data.split("###");
                 add_friend(parts[0], parts[1]);
                 // document.getElementById("search_result").textContent = data;
@@ -49,7 +49,7 @@ function search(){
 }
 function add_friend(fname, fid){
     username = document.getElementById("loginUsername").innerText;
-    if(search_result != "" && search_result != "沒找到"){
+    if(search_result != "沒找到"){
         sendAjaxRequest('add_friends', fname+'###'+fid+'###'+username, function(data) {
             if(Number(data) != -1){
                 document.getElementById("search_result").textContent = "已新增好友: "+fname;
