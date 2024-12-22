@@ -33,6 +33,7 @@
                </div>
             </div>
             <div class="section hidden">
+               <br><br><br><br><br><br><br><br><br><br><br>
                <h2 id="str_user_avail">User's Availability</h2>
                <div class="row_container">
                   <p style="margin:10px">Unavailable</p>
@@ -60,6 +61,7 @@
             </div>
             <div class="line"></div>
             <div class="section">
+               <br><br><br><br><br><br><br><br>
                <h2 id="eventName">Event Information</h2>
                <br>
                <h2>Group's Availability</h2>
