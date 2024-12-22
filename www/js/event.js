@@ -51,32 +51,6 @@ for (var i = 0; i < times.length; i++)
 }
 update_table(GT, GTI);
 
-
-// Add event listener to each cell
-document.addEventListener('click', function(object)
-{
-    const cell = object.target;
-    if (cell.classList.contains('available') || cell.classList.contains('unavailable')) {
-        // Get original UTI
-        const origUTI = get_table_info(UT);
-        
-        // Toggle cell state
-        cell.classList.toggle('available');
-        cell.classList.toggle('unavailable');
-        
-        // Get updated UTI after toggling
-        UTI = get_table_info(UT);
-
-        // Update Group Table
-        GTI = add_array(sub_array(GTI, origUTI), UTI);
-        update_table(GT, GTI);
-        
-        // Send update to server
-        const userName = document.querySelector('input[name="Name"]').value;
-        updateUserAvailability(event_id, userName, UTI);
-    }
-});
-
 // Date display formatter
 function formatDateForDisplay(yyyymmdd) {
     const year = yyyymmdd.substring(0, 4);
@@ -428,69 +402,72 @@ function updateUserAvailability(event_id, userName, availability) {
 
 
 
-// var isDragging = false;
-// var dragStartCell = null;
-// var dragEndCell = null;
-// var dragMode = null;
+var isDragging = false;
+var dragStartCell = null;
+var dragEndCell = null;
+var dragMode = null;
 
-// document.addEventListener('mousedown', function (event)
-// {
-//     const cell = event.target;
-//     if (cell.classList.contains('available') || cell.classList.contains('unavailable'))
-//     {
-//         isDragging = true;
-//         dragStartCell = cell;
-//         dragMode = cell.classList.contains('available') ? 'unavailable' : 'available';
-//     }
-// });
+document.addEventListener('mousedown', function (event)
+{
+    const cell = event.target;
+    if (cell.classList.contains('available') || cell.classList.contains('unavailable'))
+    {
+        isDragging = true;
+        dragStartCell = cell;
+        dragEndCell = cell;
+        dragMode = cell.classList.contains('available') ? 'unavailable' : 'available';
+    }
+});
 
-// document.addEventListener('mouseover', function (event) {
-//     if (isDragging) {
-//         const cell = event.target;
-//         if (cell.classList.contains('available') || cell.classList.contains('unavailable'))
-//         {
-//             dragEndCell = cell;
-//         }
-//     }
-// });
+document.addEventListener('mouseover', function (event) {
+    if (isDragging) {
+        const cell = event.target;
+        if (cell.classList.contains('available') || cell.classList.contains('unavailable'))
+        {
+            dragEndCell = cell;
+        }
+    }
+});
 
-// document.addEventListener('mouseup', function ()
-// {
-//     if (isDragging && dragStartCell && dragEndCell)
-//     {
-//         isDragging = false;
+document.addEventListener('mouseup', function ()
+{
+    if (isDragging && dragStartCell && dragEndCell)
+    {
+        isDragging = false;
 
-//         const startRow = dragStartCell.dataset.row;
-//         const startCol = dragStartCell.dataset.col;
-//         const endRow = dragEndCell.dataset.row;
-//         const endCol = dragEndCell.dataset.col;
+        const startRow = dragStartCell.dataset.row;
+        const startCol = dragStartCell.dataset.col;
+        const endRow = dragEndCell.dataset.row;
+        const endCol = dragEndCell.dataset.col;
 
-//         const minRow = Math.min(startRow, endRow);
-//         const maxRow = Math.max(startRow, endRow);
-//         const minCol = Math.min(startCol, endCol);
-//         const maxCol = Math.max(startCol, endCol);
+        const minRow = Math.min(startRow, endRow);
+        const maxRow = Math.max(startRow, endRow);
+        const minCol = Math.min(startCol, endCol);
+        const maxCol = Math.max(startCol, endCol);
 
-//         for (let row = minRow; row <= maxRow; row++)
-//         {
-//             for (let col = minCol; col <= maxCol; col++)
-//             {
-//                 const cell = document.querySelector(`[data-row='${row}'][data-col='${col}']`);
-//                 if (cell)
-//                 {
-//                     cell.classList.remove('available', 'unavailable');
-//                     cell.classList.add(dragMode);
-//                 }
-//             }
-//         }
+        const origUTI = get_table_info(UT);
+        for (let row = minRow; row <= maxRow; row++)
+        {
+            for (let col = minCol; col <= maxCol; col++)
+            {
+                const cell = document.querySelector(`[data-row='${row}'][data-col='${col}']`);
+                if (cell)
+                {
+                    cell.classList.remove('available', 'unavailable');
+                    cell.classList.add(dragMode);
+                }
+            }
+        }
 
-//         const UTI = get_table_info(UT);
-//         update_table(GT, add_array(UTI, GTI));
+        UTI = get_table_info(UT);
+        GTI = add_array(sub_array(GTI, origUTI), UTI);
+        update_table(GT, GTI);
 
-//         const userName = document.querySelector('input[name="Name"]').value;
-//         updateUserAvailability(event_id, userName, UTI);
-//     }
+        const userName = document.querySelector('input[name="Name"]').value;
+        updateUserAvailability(event_id, userName, UTI);
+    }
 
-//     dragStartCell = null;
-//     dragEndCell = null;
-//     dragMode = null;
-// });
+    dragStartCell = null;
+    dragEndCell = null;
+    dragMode = null;
+});
