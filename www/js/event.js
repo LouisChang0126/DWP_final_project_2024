@@ -1,15 +1,14 @@
 var btn = document.getElementById('confirm');
 btn.addEventListener('click', function()
 {
-    const name = document.querySelector('input[name="Name"]').value;
+    userName = document.querySelector('input[name="Name"]').value;
     const password = document.querySelector('input[name="Password"]').value;
-    
-    if (!name) {
+    if (!userName) {
         alert('Please enter your name');
         return;
     }
     
-    validateSignIn(event_id, name, password);
+    validateSignIn(event_id, userName, password);
 });
 
 
@@ -34,6 +33,9 @@ var UTI = Array.from({ length: times.length }, () => Array.from({ length: days.l
 var GTI = Array.from({ length: times.length }, () => Array.from({ length: days.length }, () => 0));
 var event_id = new URLSearchParams(window.location.search).get('event_id');
 
+var userName = "";
+var userID = "";
+
 
 UTC.innerHTML = '';
 GTC.innerHTML = '';
@@ -50,6 +52,26 @@ for (var i = 0; i < times.length; i++)
     }
 }
 update_table(GT, GTI);
+
+// Call the function when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const event_id = new URLSearchParams(window.location.search).get('event_id');
+    if (event_id) {
+        // Load event data
+        updateGroupTimetable(event_id);
+        
+        // Check session status
+        // fetch('check_login.php')
+        // .then(response => response.json())
+        // .then(data => {
+        //     if (data.loggedin) {
+        //         // User is logged in
+        //         alert('Logged in as ' + data.username);
+        //         showAvailability({ avail: [] }, data.username);
+        //     }
+        // });
+    }
+});
 
 // Date display formatter
 function formatDateForDisplay(yyyymmdd) {
@@ -263,14 +285,6 @@ function updateGroupTimetable(event_id) {
         .catch(error => console.error('Error:', error));
 }
 
-// Call the function when the page loads
-document.addEventListener('DOMContentLoaded', function() {
-    const event_id = new URLSearchParams(window.location.search).get('event_id');
-    if (event_id) {
-        updateGroupTimetable(event_id);
-    }
-});
-
 // User sign-in validation
 function validateSignIn(event_id, name, password) {
     fetch(`get_event_data.php?event_id=${event_id}`)
@@ -302,7 +316,14 @@ function validateSignIn(event_id, name, password) {
                     .then(response => response.json())
                     .then(data => {
                         if (data.success) {
-                            showAvailability({ avail: [] }, name);
+                            userID = data.user_id;
+                            fetch(`get_event_data.php?event_id=${event_id}`)
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    showAvailability(data.data.userdata[userID], name);
+                                }
+                            });
                         } else {
                             if (data.error_code === 'no_user') {
                                 // User does not exist, create new guest
@@ -344,7 +365,7 @@ function create_guest(name, password) {
     });
 }
 
-function showAvailability(user, userName) {
+function showAvailability(user, name) {
     // Get DOM elements
     const signinSection = document.getElementById('signin');
     const confirmBtn = document.getElementById('confirm');
@@ -362,7 +383,7 @@ function showAvailability(user, userName) {
     });
 
     // Display user's name
-    nameDisplay.textContent = userName + "'s Availability";
+    nameDisplay.textContent = name + "'s Availability";
 
     // Load user's existing availability
     if (user.avail) {
@@ -378,7 +399,7 @@ function showAvailability(user, userName) {
     }
 }
 
-function updateUserAvailability(event_id, userName, availability) {
+function updateUserAvailability(event_id, user_id, user_name, availability) {
     fetch('update_availability.php', {
         method: 'POST',
         headers: {
@@ -386,13 +407,16 @@ function updateUserAvailability(event_id, userName, availability) {
         },
         body: JSON.stringify({
             event_id: event_id,
-            user_name: userName,
+            user_id: user_id,
+            user_name: user_name,
             availability: availability
         })
     })
     .then(response => response.json())
     .then(data => {
-        if (!data.success) {
+        if (data.success) {
+            console.log(data.log);
+        } else {
             console.error('Failed to update availability');
         }
     });
@@ -401,7 +425,7 @@ function updateUserAvailability(event_id, userName, availability) {
 
 
 
-
+// Dragging functionality in user table
 var isDragging = false;
 var dragStartCell = null;
 var dragEndCell = null;
@@ -460,8 +484,13 @@ document.addEventListener('mouseover', function (event) {
         GTI = add_array(sub_array(GTI, origUTI), UTI);
         update_table(GT, GTI);
 
-        const userName = document.querySelector('input[name="Name"]').value;
-        updateUserAvailability(event_id, userName, UTI);
+        if (userID){
+            // regular user
+            updateUserAvailability(event_id, userID, null, UTI);
+        } else {
+            // guest user
+            updateUserAvailability(event_id, null, userName, UTI);
+        }
     }
 });
 
@@ -492,8 +521,13 @@ document.addEventListener('mouseup', function ()
         GTI = add_array(sub_array(GTI, origUTI), UTI);
         update_table(GT, GTI);
 
-        const userName = document.querySelector('input[name="Name"]').value;
-        updateUserAvailability(event_id, userName, UTI);
+        if (userID){
+            // regular user
+            updateUserAvailability(event_id, userID, null, UTI);
+        } else {
+            // guest user
+            updateUserAvailability(event_id, null, userName, UTI);
+        }
     }
 
     dragStartCell = null;
