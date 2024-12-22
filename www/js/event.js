@@ -61,15 +61,22 @@ document.addEventListener('DOMContentLoaded', function() {
         updateGroupTimetable(event_id);
         
         // Check session status
-        // fetch('check_login.php')
-        // .then(response => response.json())
-        // .then(data => {
-        //     if (data.loggedin) {
-        //         // User is logged in
-        //         alert('Logged in as ' + data.username);
-        //         showAvailability({ avail: [] }, data.username);
-        //     }
-        // });
+        fetch('check_login.php')
+        .then(response => response.json())
+        .then(data => {
+            if (data.loggedin) {
+                // User is logged in
+                userID = data.user_id;
+                userName = data.username;
+                fetch(`get_event_data.php?event_id=${event_id}`)
+                .then(response => response.json())
+                .then(data => {
+                    if (data.success) {
+                        showAvailability(data.data.userdata[userID], userName);
+                    }
+                });
+            }
+        });
     }
 });
 
