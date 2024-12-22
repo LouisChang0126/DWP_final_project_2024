@@ -173,6 +173,7 @@ table {
     color: white;
     text-align: center;
     font-size: 16px;
+    user-select: none;
 }
 
 thead th {
@@ -200,6 +201,14 @@ tbody td {
 
 .availability-table .available {
     cursor: pointer;
+    background-color: #28a745;
+}
+
+.availability-table .drag_false {
+    background-color: #f8d7da;
+}
+
+.availability-table .drag_true {
     background-color: #28a745;
 }
 

@@ -415,7 +415,8 @@ document.addEventListener('mousedown', function (event)
         isDragging = true;
         dragStartCell = cell;
         dragEndCell = cell;
-        dragMode = cell.classList.contains('available') ? 'unavailable' : 'available';
+        dragMode = cell.classList.contains('available') ? 'drag_false' : 'drag_true';
+        cell.classList.add(dragMode);
     }
 });
 
@@ -426,14 +427,6 @@ document.addEventListener('mouseover', function (event) {
         {
             dragEndCell = cell;
         }
-    }
-});
-
-document.addEventListener('mouseup', function ()
-{
-    if (isDragging && dragStartCell && dragEndCell)
-    {
-        isDragging = false;
 
         const startRow = dragStartCell.dataset.row;
         const startCol = dragStartCell.dataset.col;
@@ -446,6 +439,11 @@ document.addEventListener('mouseup', function ()
         const maxCol = Math.max(startCol, endCol);
 
         const origUTI = get_table_info(UT);
+        document.querySelectorAll('td').forEach(cell => 
+        {
+            cell.classList.remove('drag_true');
+            cell.classList.remove('drag_false');
+        });
         for (let row = minRow; row <= maxRow; row++)
         {
             for (let col = minCol; col <= maxCol; col++)
@@ -453,12 +451,43 @@ document.addEventListener('mouseup', function ()
                 const cell = document.querySelector(`[data-row='${row}'][data-col='${col}']`);
                 if (cell)
                 {
-                    cell.classList.remove('available', 'unavailable');
                     cell.classList.add(dragMode);
                 }
             }
         }
 
+        UTI = get_table_info(UT);
+        GTI = add_array(sub_array(GTI, origUTI), UTI);
+        update_table(GT, GTI);
+
+        const userName = document.querySelector('input[name="Name"]').value;
+        updateUserAvailability(event_id, userName, UTI);
+    }
+});
+
+document.addEventListener('mouseup', function ()
+{
+    if (isDragging && dragStartCell && dragEndCell)
+    {
+        isDragging = false;
+
+        const origUTI = get_table_info(UT);
+        document.querySelectorAll('td').forEach(cell => 
+        {
+            if (cell.classList.contains('drag_true'))
+            {
+                cell.classList.remove('drag_true');
+                cell.classList.remove('unavailable');
+                cell.classList.add('available');
+            }
+            else if (cell.classList.contains('drag_false'))
+            {
+                cell.classList.remove('drag_false');
+                cell.classList.remove('available');
+                cell.classList.add('unavailable');
+            }
+        });
+        
         UTI = get_table_info(UT);
         GTI = add_array(sub_array(GTI, origUTI), UTI);
         update_table(GT, GTI);
