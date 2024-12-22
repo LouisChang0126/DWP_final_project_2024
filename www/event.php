@@ -29,7 +29,7 @@
                </div>
                <div class="row_container">
                   <p style="margin:8px">Password</p>
-                  <input type="text" name="Password" placeholder="(optional)" required  style="margin:10px">
+                  <input type="password" name="Password" placeholder="(optional)" required  style="margin:10px">
                </div>
             </div>
             <div class="section hidden">
