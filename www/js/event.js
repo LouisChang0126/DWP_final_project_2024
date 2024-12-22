@@ -72,7 +72,10 @@ document.addEventListener('DOMContentLoaded', function() {
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {
-                        showAvailability(data.data.userdata[userID], userName);
+                        // Create empty availability if userdata doesn't exist
+                        const emptyAvail = Array(times.length).fill().map(() => Array(days.length).fill(0));
+                        const userData = data.data.userdata?.[userID] || { avail: emptyAvail };
+                        showAvailability(userData, userName);
                     }
                 });
             }
@@ -328,7 +331,10 @@ function validateSignIn(event_id, name, password) {
                             .then(response => response.json())
                             .then(data => {
                                 if (data.success) {
-                                    showAvailability(data.data.userdata[userID], name);
+                                    // Create empty availability if userdata doesn't exist
+                                    const emptyAvail = Array(times.length).fill().map(() => Array(days.length).fill(0));
+                                    const userData = data.data.userdata?.[userID] || { avail: emptyAvail };
+                                    showAvailability(userData, userName);
                                 }
                             });
                         } else {
