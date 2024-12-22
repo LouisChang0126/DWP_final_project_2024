@@ -56,6 +56,7 @@
                      Remember to appendChild(table) <br>
                   </p>
                </div>
+               <button onclick="friends()" style="left:50%;bottom:5%">Invite!</button>
             </div>
             <div class="line"></div>
             <div class="section">
@@ -78,11 +79,14 @@
                </div>
             </div>
          </div>
+
+         <div id="finded_friends"></div>
       </main>
 
       <footer>
          <p>Copyright © 2024 張家睿、司徒立中、蔡欣龍 All Rights Reserved</p>
       </footer>
       <script src="./js/event.js"></script>
+      <script src="./js/invite.js"></script>
    </body>
 </html>
