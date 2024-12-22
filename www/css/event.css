@@ -229,6 +229,22 @@ input[type="text"]:focus {
     box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
 }
 
+input[type="password"] {
+    padding: 12px;
+    width: 50%;
+    max-width: 400px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    font-size: 16px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input[type="password"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 8px rgba(0, 123, 255, 0.5);
+}
+
 
 button {
     position: absolute;
