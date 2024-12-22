@@ -58,6 +58,7 @@
 
       <script src="./js/tab_ctrl.js"></script>
    </body>
+
 <?php
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
    $action = $_POST['action'] ?? '';
@@ -109,8 +110,9 @@ function register(){
       else {
          // 加入新帳號
          $empty = '{}';
+         $quick_table = '{"00:00":[0,0,0,0,0,0,0],"01:00":[0,0,0,0,0,0,0],"02:00":[0,0,0,0,0,0,0],"03:00":[0,0,0,0,0,0,0],"04:00":[0,0,0,0,0,0,0],"05:00":[0,0,0,0,0,0,0],"06:00":[0,0,0,0,0,0,0],"07:00":[0,0,0,0,0,0,0],"08:00":[0,0,0,0,0,0,0],"09:00":[0,0,0,0,0,0,0],"10:00":[0,0,0,0,0,0,0],"11:00":[0,0,0,0,0,0,0],"12:00":[0,0,0,0,0,0,0],"13:00":[0,0,0,0,0,0,0],"14:00":[0,0,0,0,0,0,0],"15:00":[0,0,0,0,0,0,0],"16:00":[0,0,0,0,0,0,0],"17:00":[0,0,0,0,0,0,0],"18:00":[0,0,0,0,0,0,0],"19:00":[0,0,0,0,0,0,0],"20:00":[0,0,0,0,0,0,0],"21:00":[0,0,0,0,0,0,0],"22:00":[0,0,0,0,0,0,0],"23:00":[0,0,0,0,0,0,0]}';
          $stmt = $link->prepare("INSERT INTO user (username, password, email, quick_table, friends, history) VALUES (?, ?, ?, ?, ?, ?)");
-         $stmt->bind_param("ssssss", $username, $password, $email, $empty, $empty, $empty);
+         $stmt->bind_param("ssssss", $username, $password, $email, $quick_table, $empty, $empty);
          if ($stmt->execute()) {
                $_SESSION['username'] = $username;
                $_SESSION['passwd'] = $password;
